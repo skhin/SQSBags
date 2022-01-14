@@ -1,6 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=B612+Mono&family=Montserrat&family=Nanum+Myeongjo&family=Righteous&family=Roboto:wght@100&family=Rubik&family=Stalinist+One&family=Varela+Round&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display+SC&display=swap");
 
+.app {
+  height: 80vh;
+}
+
 /* Header Component */
 .sqs-logo {
   font-family: "Playfair Display SC", serif;
