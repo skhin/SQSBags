@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=B612+Mono&family=Montserrat&family=Nanum+Myeongjo&family=Righteous&family=Roboto:wght@100&family=Rubik&family=Stalinist+One&family=Varela+Round&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display+SC&display=swap");
+
+/* Header Component */
+.sqs-logo {
+  font-family: "Playfair Display SC", serif;
+  color: #2a7c6f;
+}
+
+.header {
+  text-align: center;
+  margin: 20px;
+  padding-top: 30px;
+  padding-left: 10px;
+  font-family: "Playfair Display SC", serif;
+  font-weight: bolder;
+  /* font-family: "B612 Mono", monospace; used for descriptions*/
+}
+
+.title {
+  font-size: 70px;
+  font-style: italic;
+  text-decoration: wavy;
+  font-weight: bolder;
+}
+
+.caption {
+  font-weight: lighter;
+  font-size: 16px;
+  color: grey;
+}
+
+/* Footer Component */
+footer {
+  background-color: black;
+  color: whitesmoke;
+  text-align: center;
+  font-family: "B612 Mono", monospace;
+  font-size: 7px;
+  padding: 20px;
+  margin: 40px;
+}
