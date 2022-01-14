@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=B612+Mono&family=Montserrat&family=Righteous&family=Rubik&family=Stalinist+One&family=Varela+Round&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=B612+Mono&family=Montserrat&family=Nanum+Myeongjo&family=Righteous&family=Roboto:wght@100&family=Rubik&family=Stalinist+One&family=Varela+Round&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display+SC&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "B612 Mono", monospace;
+  font-family: "Montserrat", sans-serif;
+  font-family: "Roboto", sans-serif;
+  font-family: "Playfair Display SC", serif;
+  font-family: "Varela Round", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #fffefc;
+  color: #2a7c6f;
+}
+
+img {
+  width: 100%;
+  object-fit: contain;
+}
