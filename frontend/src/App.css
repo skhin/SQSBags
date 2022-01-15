@@ -21,6 +21,11 @@
   /* font-family: "B612 Mono", monospace; used for descriptions*/
 }
 
+a {
+  text-decoration: none;
+  color: #2a7c6f;
+}
+
 .title {
   font-size: 70px;
   font-style: italic;

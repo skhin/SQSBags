@@ -23,9 +23,9 @@ const Navbar = (click) => {
               </span>
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/">Shop</Link>
-          </li>
+          </li> */}
         </ul>
         {/* <div className="hamburger__menu">
           <div className="hamburger__menu__div"></div>

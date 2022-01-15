@@ -12,16 +12,23 @@ import { getAllBags as listProducts } from "../redux/actions/productActions";
 const HomePage = () => {
   const dispatch = useDispatch();
 
+  // get the data info
   const getAllBags = useSelector((state) => state.getAllBags);
+
+  // destructure the products. Before loading anything. it will check for error
   const { products, loading, error } = getAllBags;
 
+  // every time the page loads, it lists the items
   useEffect(() => {
     dispatch(listProducts());
   }, [dispatch]);
 
   return (
     <div className="homepage">
-      <h2 className="homepage__title">Latest Products</h2>
+      <h2 className="homepage__title">
+        <strong>Our New Arrivals</strong>
+      </h2>
+      <hr />
       <div className="homepage__products">
         {loading ? (
           <h2>Loading...</h2>
