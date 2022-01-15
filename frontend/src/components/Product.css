@@ -16,6 +16,7 @@
   height: 170px;
   object-fit: contain;
   border-radius: 8px;
+  transition: transform 1s linear;
 }
 
 .product__info > p {

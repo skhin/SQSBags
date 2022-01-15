@@ -17,7 +17,7 @@ const HomePage = () => {
 
   // destructure the products. Before loading anything. it will check for error
   const { products, loading, error } = getAllBags;
-
+  const products2 = products.concat(products);
   // every time the page loads, it lists the items
   useEffect(() => {
     dispatch(listProducts());
@@ -30,27 +30,33 @@ const HomePage = () => {
       </h2>
       <hr />
       <div className="homepage__products">
-        {loading ? (
-          <h2>Loading...</h2>
-        ) : error ? (
-          <h2>{error}</h2>
-        ) : (
-          products.map((product) => (
-            <Product
-              key={product._id}
-              name={product.name}
-              color={product.color}
-              material={product.material}
-              type={product.type}
-              occasion={product.occasion}
-              img={product.img}
-              stock={product.stock}
-              price={product.price}
-              tags={product.tags}
-              productId={product._id}
-            />
-          ))
-        )}
+        <div className="slider">
+          <div className="slide-track">
+            {loading ? (
+              <h2>Loading...</h2>
+            ) : error ? (
+              <h2>{error}</h2>
+            ) : (
+              products2.map((product) => (
+                <div className="slide">
+                  <Product
+                    key={product._id}
+                    name={product.name}
+                    color={product.color}
+                    material={product.material}
+                    type={product.type}
+                    occasion={product.occasion}
+                    img={product.img}
+                    stock={product.stock}
+                    price={product.price}
+                    tags={product.tags}
+                    productId={product._id}
+                  />
+                </div>
+              ))
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

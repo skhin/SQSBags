@@ -41,3 +41,55 @@ hr {
     grid-template-columns: 1fr;
   }
 }
+
+.slider {
+  height: 400px;
+  margin: auto;
+  position: relative;
+  width: 90%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  align-items: center;
+}
+
+.slide-track {
+  display: flex;
+  width: calc(250px * 28);
+  animation: scroll 40s linear infinite;
+}
+
+.slide-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-400px * 10));
+  }
+}
+
+.slide {
+  height: 400px;
+  width: 400px;
+  display: flex;
+  align-items: center;
+  padding: 30px;
+  perspective: 100px;
+  position: relative;
+}
+
+.product > img {
+  width: 120%;
+  /* height: 100%; */
+  transition: transform 0.5s linear;
+}
+
+.slide > img:hover {
+  transform: translateZ(20px);
+  /* height: 120%;
+  width: 120%; */
+}
