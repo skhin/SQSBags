@@ -1,5 +1,6 @@
 import * as actionTypes from "../constants/productConstants";
 
+// handles all the state received from backend and retrieves all products
 export const getProductsReducer = (state = { products: [] }, action) => {
   switch (action.type) {
     case actionTypes.GET_PRODUCTS_REQUEST:
@@ -9,8 +10,9 @@ export const getProductsReducer = (state = { products: [] }, action) => {
       };
     case actionTypes.GET_PRODUCTS_SUCCESS:
       return {
-        products: action.payload,
         loading: false,
+        // populate the products from the backend
+        products: action.payload,
       };
     case actionTypes.GET_PRODUCTS_FAIL:
       return {
@@ -22,6 +24,7 @@ export const getProductsReducer = (state = { products: [] }, action) => {
   }
 };
 
+// get each product details from backend
 export const getProductDetailsReducer = (state = { product: {} }, action) => {
   switch (action.type) {
     case actionTypes.GET_PRODUCT_DETAILS_REQUEST:

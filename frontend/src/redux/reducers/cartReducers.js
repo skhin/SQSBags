@@ -9,6 +9,7 @@ export const cartReducer = (state = CART_INITIAL_STATE, action) => {
     case actionTypes.ADD_TO_CART:
       const item = action.payload;
 
+      // check if items exist in the cart by mapping through
       const existItem = state.cartItems.find((x) => x.product === item.product);
 
       if (existItem) {
@@ -20,6 +21,7 @@ export const cartReducer = (state = CART_INITIAL_STATE, action) => {
         };
       } else {
         return {
+          // add in the new item into the array
           ...state,
           cartItems: [...state.cartItems, item],
         };

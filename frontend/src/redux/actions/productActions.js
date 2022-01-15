@@ -5,6 +5,7 @@ export const getAllBags = () => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.GET_PRODUCTS_REQUEST });
 
+    // making request to API
     const { data } = await axios.get("/api/bags");
 
     dispatch({
@@ -26,6 +27,7 @@ export const getProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.GET_PRODUCT_DETAILS_REQUEST });
 
+    // making request to API
     const { data } = await axios.get(`/api/bags/${id}`);
 
     dispatch({

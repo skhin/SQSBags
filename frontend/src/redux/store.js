@@ -15,6 +15,8 @@ const reducer = combineReducers({
   getProductDetails: getProductDetailsReducer,
 });
 
+//creates an array that has all the middleware in it
+// helps in making async request in actions
 const middleware = [thunk];
 
 const cartItemsInLocalStorage = localStorage.getItem("cart")
@@ -30,6 +32,8 @@ const INITIAL_STATE = {
 const store = createStore(
   reducer,
   INITIAL_STATE,
+  // takes in state or enhancer in redux
+  // applymiddleware adds in to the array of the middlewares
   composeWithDevTools(applyMiddleware(...middleware))
 );
 
