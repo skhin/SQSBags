@@ -20,9 +20,9 @@ const HomePage = () => {
   }, [dispatch]);
 
   return (
-    <div className="homescreen">
-      <h2 className="homescreen__title">Latest Products</h2>
-      <div className="homescreen__products">
+    <div className="homepage">
+      <h2 className="homepage__title">Latest Products</h2>
+      <div className="homepage__products">
         {loading ? (
           <h2>Loading...</h2>
         ) : error ? (
