@@ -88,7 +88,7 @@ const bags = [
     tags: ["canvas", "tote", "handles"],
   },
   {
-    "name:": "Bag 9",
+    name: "Bag 9",
     color: "white",
     material: "leather",
     type: "handbag",
@@ -110,5 +110,5 @@ const bags = [
     tags: ["leather", "chain", "metal"],
   },
 ];
-​
+
 module.exports = bags;
