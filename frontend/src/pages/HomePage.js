@@ -7,13 +7,13 @@ import { useDispatch, useSelector } from "react-redux";
 import Product from "../components/Product";
 
 //Actions
-import { getProducts as listProducts } from "../redux/actions/productActions";
+import { getAllBags as listProducts } from "../redux/actions/productActions";
 
 const HomePage = () => {
   const dispatch = useDispatch();
 
-  const getProducts = useSelector((state) => state.getProducts);
-  const { products, loading, error } = getProducts;
+  const getAllBags = useSelector((state) => state.getAllBags);
+  const { products, loading, error } = getAllBags;
 
   useEffect(() => {
     dispatch(listProducts());

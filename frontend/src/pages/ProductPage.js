@@ -41,7 +41,6 @@ const ProductPage = ({ match, history }) => {
             <div className="left__info">
               <p className="left__name">{product.name}</p>
               <p>Price: ${product.price}</p>
-              <p>Description: {product.description}</p>
             </div>
           </div>
           <div className="productpage__right">
