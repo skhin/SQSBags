@@ -22,4 +22,58 @@ const getBagByID = async (req, res) => {
   }
 };
 
-module.exports = { getAllBags, getBagByID };
+// router.get("/new", (req, res) => {
+//   res.render(<new item page>);// handled by front end
+// });
+
+const createNewBag = async (req, res) => {
+  try {
+    await BagsModel.create(req.body);
+    const bag = await BagsModel.findById(req.params.id);
+
+    res.json(bag);
+  } catch (error) {
+    console.error(error);
+    res.status(403).json({ status: "fail", message: "Server Error" });
+  }
+};
+
+const editBag = async (req, res) => {
+  try {
+    response = await BagsModel.updateOne(
+      { _id: req.params.id },
+      {
+        $set: {
+          name: req.body.name,
+          img: req.body.img,
+          description: req.body.description,
+          price: req.body.price,
+          qty: req.body.qty,
+        },
+      }
+    );
+    console.log(response);
+    //need to find out how to set only filled fields
+    const bag = await BagsModel.findById(req.params.id);
+
+    res.json(bag);
+  } catch (error) {
+    console.error(error);
+    res.status(403).json({ status: "fail", message: "Server Error" });
+  }
+};
+
+const deleteBag = async (req, res) => {
+  try {
+    await BagsModel.findByIdAndDelete(req.params.id, {
+      useFindAndModify: false,
+    });
+
+    res.send({ status: successful });
+  } catch (error) {
+    console.error(error);
+    res.status(403).json({ status: "fail", message: "Server Error" });
+  }
+};
+
+module.exports = { getAllBags, getBagByID, createNewBag, editBag, deleteBag };
