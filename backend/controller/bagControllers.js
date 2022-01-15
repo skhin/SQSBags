@@ -1,8 +1,8 @@
-const Bags = require("../models/Bags");
+const BagsModel = require("../models/Bags");
 
 const getAllBags = async (req, res) => {
   try {
-    const bags = await Bags.find({});
+    const bags = await BagsModel.find({});
 
     res.json(bags);
   } catch (error) {
@@ -13,7 +13,7 @@ const getAllBags = async (req, res) => {
 
 const getBagByID = async (req, res) => {
   try {
-    const bag = await Bag.findById(req.params.id);
+    const bag = await BagsModel.findById(req.params.id);
 
     res.json(bag);
   } catch (error) {

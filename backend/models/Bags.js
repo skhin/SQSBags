@@ -13,5 +13,5 @@ const BagsSchema = new mongoose.Schema(
   },
   { collection: "bags" }
 );
-const BagsModel = mongoose.model("Bags", BagsSchema);
+const BagsModel = mongoose.model("bags", BagsSchema);
 module.exports = BagsModel;

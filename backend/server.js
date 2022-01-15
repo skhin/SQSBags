@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const connectDB = require("./config/db");
-const bagRoutes = require("./routes/bagRoutes");
+const bagRoutes = require("./router/bagRoutes");
 
 connectDB();
 

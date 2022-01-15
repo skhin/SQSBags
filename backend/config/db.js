@@ -1,12 +1,12 @@
-require("dotenv").config();
-
 const mongoose = require("mongoose");
+
+const db =
+  "mongodb+srv://yeos:GAPa55w0rd@cluster0.gfhcj.mongodb.net/bags?retryWrites=true&w=majority";
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI, {
+    await mongoose.connect(db, {
       useNewUrlParser: true,
-      useUnifiedTopology: true,
     });
     console.log("MongoDB connection OK");
   } catch (error) {

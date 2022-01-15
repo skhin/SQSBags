@@ -1,22 +1,20 @@
-require("dotenv").config();
-
 const bagsData = require("./data/bags");
 const connectDB = require("./config/db");
-const Bags = require("./models/Bags");
+const BagsModel = require("./models/Bags");
 
 connectDB();
 
 const importData = async () => {
   // delete everything in database to insert many items
   try {
-    await Bags.deleteMany({});
+    await BagsModel.deleteMany({});
 
-    await Bags.insertMany(bagsData);
+    await BagsModel.insertMany(bagsData);
 
     console.log("Data Import Done");
     process.exit();
   } catch (error) {
-    console.error("Error with importing data");
+    console.error("Error with importing data " + error);
     process.exit(1);
   }
 };
