@@ -8,8 +8,10 @@ const UserSchema = new mongoose.Schema(
     name: { type: String, required: true },
     address: { type: String, required: true },
     phone: { type: Number, required: true },
+    isAdmin: { type: Boolean, default: false },
   },
-  { collection: "users" }
+  { collection: "users" },
+  { timestamps: true }
 );
 //the model is an instant of the schema
 const Users = mongoose.model("Users", UserSchema);
