@@ -40,17 +40,12 @@ const createNewBag = async (req, res) => {
 
 const editBag = async (req, res) => {
   try {
-    response = await BagsModel.updateOne(
+    response = await BagsModel.findByIdAndUpdate(
       { _id: req.params.id },
       {
-        $set: {
-          name: req.body.name,
-          img: req.body.img,
-          description: req.body.description,
-          price: req.body.price,
-          qty: req.body.qty,
-        },
-      }
+        $set: req.body,
+      },
+      { new: true }
     );
     console.log(response);
     //need to find out how to set only filled fields
