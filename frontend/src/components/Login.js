@@ -12,6 +12,7 @@ import {
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
   const [password, setPassword] = useState("");
@@ -30,11 +31,19 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("logging in!");
-    await fetch("http://localhost:3000/auth/login", {
+    await fetch("/auth/login", {
       method: "POST",
+      mode: "cors",
       data: JSON.stringify({ email: email, password: password }),
     });
   };
+  const history = useHistory();
+
+  const routeChange = () => {
+    const path = "/register";
+    history.push(path);
+  };
+
   const theme = createTheme({
     status: {
       danger: "#e53e3e",
@@ -113,7 +122,7 @@ const Login = () => {
       <div>
         <p>I DON'T HAVE AN ACCOUNT YET</p>
         <p>Get to save items and checkout your newest favourite!</p>
-        <button onclick="location.href='/register';">Create My Account</button>
+        <button onClick={routeChange}>Create My Account</button>
       </div>
     </>
   );

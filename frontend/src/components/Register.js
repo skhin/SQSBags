@@ -1,5 +1,5 @@
 //use MUI framework for forms
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./Register.css";
 import {
   TextField,
@@ -461,6 +461,16 @@ const Register = () => {
     setConfirmPassword(e.target.value);
   };
 
+  const passwordRef = useRef(null);
+  const passwordRoute = () => {
+    passwordRef.current.scrollIntoView();
+  };
+
+  const particularsRef = useRef(null);
+  const particularsRoute = () => {
+    particularsRef.current.scrollIntoView();
+  };
+
   return (
     <>
       <header>
@@ -493,7 +503,7 @@ const Register = () => {
           // onClick={() => {
           //   console.log("click!");
           // }}
-          href="/#register-password"
+          onClick={passwordRoute}
         >
           Next
         </Button>
@@ -501,6 +511,7 @@ const Register = () => {
       <div
         className="section"
         id="register-password"
+        ref={passwordRef}
         style={{ display: "flex", flexDirection: "column" }}
       >
         <p>Password</p>
@@ -557,7 +568,7 @@ const Register = () => {
           // onClick={() => {
           //   console.log("click!");
           // }}
-          href="/#register-particulars"
+          onClick={particularsRoute}
         >
           Next
         </Button>
@@ -565,6 +576,7 @@ const Register = () => {
       <div
         className="section"
         id="register-particulars"
+        ref={particularsRef}
         style={{ display: "flex", flexDirection: "column" }}
       >
         <p>Particulars</p>

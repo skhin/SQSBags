@@ -15,7 +15,8 @@ import ShopPage from "./pages/ShopPage";
 import Navbar from "./components/Navbar";
 import Backdrop from "./components/Backdrop";
 import SideDrawer from "./components/SideDrawer";
-import Login from "./components/Login"
+import Login from "./components/Login";
+import Register from "./components/Register";
 
 function App() {
   const [sideToggle, setSideToggle] = useState(false);
@@ -60,6 +61,7 @@ function App() {
             <Route exact path="/login" component={Login} />
             <Route exact path="/bags/:id" component={ProductPage} />
             <Route exact path="/cart" component={CartPage} />
+            <Route exact path="/register" component={Register} />
           </Switch>
         </main>
       </Router>

@@ -10,7 +10,7 @@ const Navbar = (click) => {
     <div>
       <nav className="navbar">
         <div className="navbar__left">
-          <div classname="navbar__logo">
+          <div className="navbar__logo">
             <a href="/">
               <img className="nav__logo sqs__logo" src={logo} alt="SQS_Logo" />
               <h4 className="nav__sqs">SQS Bags</h4>
