@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 import HomePage from "./pages/HomePage";
 import ProductPage from "./pages/ProductPage";
 import CartPage from "./pages/CartPage";
-import ShopPage from "./pages/ShopPage";
+// import ShopPage from "./pages/ShopPage";
 
 // Components Import
 import Navbar from "./components/Navbar";
@@ -55,7 +55,7 @@ function App() {
         <main className="app">
           <Switch>
             <Route exact path="/" component={HomePage} />
-            <Route exact path="/shop" component={ShopPage} />
+            {/* <Route exact path="/shop" component={ShopPage} /> */}
             <Route exact path="/bags/:id" component={ProductPage} />
             <Route exact path="/cart" component={CartPage} />
           </Switch>
