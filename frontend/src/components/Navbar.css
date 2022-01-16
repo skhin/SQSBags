@@ -10,6 +10,34 @@
   padding-right: 60px;
 }
 
+.navbar__left {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+}
+
+.navbar__search__container {
+  border: 0.5px solid lightgray;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 3px;
+  padding: 5px;
+  padding-left: 10px;
+}
+
+.navbar__center {
+  flex: 1;
+  text-align: center;
+  font-weight: bold;
+}
+
+.navbar__right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
 .navbar__logo h4 {
   color: #f4f4f4;
   font-size: 1.4rem;
@@ -26,6 +54,7 @@ h4 {
   color: #2a7c6f;
   font-family: "Playfair Display SC", serif;
   font-weight: bolder;
+  font-size: 22px;
 }
 
 .sqs__logo {

@@ -3,7 +3,7 @@ import "./App.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // Pages Import
 import HomePage from "./pages/HomePage";
@@ -17,8 +17,35 @@ import SideDrawer from "./components/SideDrawer";
 
 function App() {
   const [sideToggle, setSideToggle] = useState(false);
+
+  // scroll to top button
+  const [showButton, setShowButton] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.pageYOffset > 300) {
+        setShowButton(true);
+      } else {
+        setShowButton(false);
+      }
+    });
+  }, []);
+
+  // This function will scroll the window to the top
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // for smoothly scrolling
+    });
+  };
+
   return (
     <div className="app">
+      {showButton && (
+        <button onClick={scrollToTop} className="back-to-top">
+          &#8679;
+        </button>
+      )}
       <Header />
       <Router>
         <Navbar click={() => setSideToggle(true)} />

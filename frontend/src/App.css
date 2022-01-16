@@ -49,3 +49,21 @@ footer {
   padding: 20px;
   margin: 40px;
 }
+
+/* Scroll to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 40px;
+  background: rgb(23, 36, 2);
+  color: white;
+  cursor: pointer;
+  border-radius: 100px;
+  border: none;
+  box-shadow: 0 5px 10px #ccc;
+}
+
+.back-to-top:hover {
+  background: rgb(112, 104, 233);
+}
