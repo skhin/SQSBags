@@ -8,6 +8,7 @@ import Product from "../components/Product";
 
 //Actions
 import { getAllBags as listProducts } from "../redux/actions/productActions";
+import ShopPage from "./ShopPage";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -56,6 +57,7 @@ const HomePage = () => {
               ))
             )}
           </div>
+          <ShopPage />
         </div>
       </div>
     </div>
