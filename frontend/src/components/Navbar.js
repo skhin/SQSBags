@@ -23,7 +23,11 @@ const Navbar = (click) => {
             </div>
           </div>
         </div>
-        <div className="navbar__center">Center</div>
+        <div className="navbar__center">
+          <Link to="/shop" className="shop__link">
+            SHOP
+          </Link>
+        </div>
         <div className="navbar__right">
           <ul className="navbar__links">
             <li>
