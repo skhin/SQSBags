@@ -31,7 +31,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("logging in!");
-    await fetch("/auth/login", {
+    await fetch("/api/auth/login", {
       method: "POST",
       mode: "cors",
       data: JSON.stringify({ email: email, password: password }),
