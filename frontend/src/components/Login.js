@@ -15,14 +15,25 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const Login = () => {
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
   const [hidden, setHidden] = useState(true);
   const handleVisibility = () => {
     setHidden(!hidden);
-    console.log(hidden);
   };
-  const handleChange = (e) => {
-    console.log(e.target);
+  const handlePasswordChange = (e) => {
     setPassword(e.target.value);
+  };
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("logging in!");
+    await fetch("http://localhost:3000/auth/login", {
+      method: "POST",
+      data: JSON.stringify({ email: email, password: password }),
+    });
   };
   const theme = createTheme({
     status: {
@@ -58,8 +69,9 @@ const Login = () => {
       >
         <TextField
           id="outlined-basic"
-          label="Username"
+          label="Email"
           sx={{ m: 1, width: "25ch" }}
+          onChange={handleEmailChange}
           // variant="outlined"
         />
         <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
@@ -70,7 +82,7 @@ const Login = () => {
             id="outlined-adornment-password"
             type={hidden ? "password" : "text"}
             value={password}
-            onChange={handleChange}
+            onChange={handlePasswordChange}
             endAdornment={
               <InputAdornment position="end">
                 <IconButton
@@ -92,6 +104,7 @@ const Login = () => {
             variant="contained"
             sx={{ m: 1, width: "25ch" }}
             color="neutral"
+            onClick={handleSubmit}
           >
             LOG IN
           </Button>

@@ -27,6 +27,9 @@ const Navbar = (click) => {
           <Link to="/shop" className="shop__link">
             SHOP
           </Link>
+          <Link to="/login" className="login__link">
+            LOGIN
+          </Link>
         </div>
         <div className="navbar__right">
           <ul className="navbar__links">
