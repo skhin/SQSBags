@@ -47,13 +47,23 @@ const ProductPage = ({ match, history }) => {
             <div className="right__info">
               <p>
                 Price:
-                <span>${product.price}</span>
+                <span className="bold">${product.price}</span>
               </p>
-              <p>Type: {product.type}</p>
-              <p>Occasion: {product.occasion}</p>
-              <p>Material: {product.material}</p>
-              <p>Tags: {product.tags}</p>
-              <p>Colors Available: {product.color}</p>
+              <p>
+                Type: <span className="bold">{product.type}</span>
+              </p>
+              <p>
+                Occasion: <span className="bold">{product.occasion}</span>
+              </p>
+              <p>
+                Material: <span className="bold">{product.material}</span>
+              </p>
+              <p>
+                Tags: <span className="bold">{product.tags}</span>
+              </p>
+              <p>
+                Colors Available: <span className="bold">{product.color}</span>
+              </p>
               <p>
                 Status:
                 <span>{product.stock > 0 ? "In Stock" : "Out of Stock"}</span>

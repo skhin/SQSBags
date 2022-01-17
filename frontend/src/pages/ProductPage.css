@@ -51,9 +51,10 @@
 
 .right__info p {
   padding: 1rem;
-  font-size: 0.8rem;
+  font-size: 1rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  text-transform: capitalize;
 }
 
 .right__info p > button {
