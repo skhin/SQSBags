@@ -499,8 +499,20 @@ const Register = () => {
   const handlePhoneChange = (e) => {
     dispatch(userActions.setPhone(e.target.value));
   };
-  const handleSubmit = (e) => {
+  const user = useSelector((state) => state.user);
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("new user!");
+
+    const res = await axios.post("/api/auth/register", {
+      name: user.fname + " " + user.lname,
+      email: user.email,
+      password: user.password,
+      address: user.address + " " + user.country + user.postal,
+      phone: user.phone,
+    });
+    console.log(res);
+    dispatch(userActions.registerSuccess(res.data));
   };
 
   return (
