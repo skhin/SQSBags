@@ -3,24 +3,40 @@ import { createSlice } from "@reduxjs/toolkit";
 export const userSlice = createSlice({
   name: "user", //store name
   initialState: {
-    name: "",
+    fname: "",
+    lname: "",
     address: "",
     email: "",
     accessToken: "",
+    country: "",
+    postal: "",
+    countryCode: "",
     phone: null,
     password: "",
     isFetching: false,
     error: false,
   },
   reducers: {
-    setName: (state, action) => {
-      state.name = action.payload;
+    setFirstName: (state, action) => {
+      state.fname = action.payload + " ";
+    },
+    setLastName: (state, action) => {
+      state.lname = action.payload + " ";
     },
     setAddress: (state, action) => {
       state.address = action.payload;
     },
     setEmail: (state, action) => {
       state.email = action.payload;
+    },
+    setCountry: (state, action) => {
+      state.country = action.payload;
+    },
+    setPostal: (state, action) => {
+      state.postal = action.payload;
+    },
+    setCountryCode: (state, action) => {
+      state.countryCode = action.payload;
     },
     setPhone: (state, action) => {
       state.phone = action.payload;
