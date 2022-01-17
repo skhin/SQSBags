@@ -42,15 +42,11 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("logging in!");
-    // await fetch("/api/auth/login", {
-    //   method: "POST",
-    //   mode: "cors",
-    //   data: JSON.stringify({ email: email, password: password }),
-    // });
     const login = async (dispatch, user) => {
       dispatch(loginStart());
       try {
         const res = await axios.post("/api/auth/login", user);
+        console.log(res);
         dispatch(loginSuccess(res.data));
       } catch (err) {
         dispatch(loginFailure());
@@ -59,8 +55,10 @@ const Login = () => {
     login(dispatch, { email, password });
   };
 
+  const { isFetching, error } = useSelector((state) => state.user);
   //for the register button
   const history = useHistory();
+
   const routeChange = () => {
     const path = "/register";
     history.push(path);

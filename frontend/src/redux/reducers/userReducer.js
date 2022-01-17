@@ -3,7 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 export const userSlice = createSlice({
   name: "user", //store name
   initialState: {
-    currentUser: null,
+    name: "",
+    address: "",
+    email: "",
+    accessToken: "",
+    phone: null,
     isFetching: false,
     error: false,
   },
@@ -13,7 +17,11 @@ export const userSlice = createSlice({
     },
     loginSuccess: (state, action) => {
       state.isFetching = false;
-      state.currentUser = action.payload;
+      state.name = action.payload.name;
+      state.address = action.payload.address;
+      state.email = action.payload.email;
+      state.accessToken = action.payload.accessToken;
+      state.phone = action.payload.phone;
       //state is like the actual thing, action.payload is like what you put in
     },
     loginFailure: (state) => {
