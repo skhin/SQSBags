@@ -72,6 +72,10 @@
   padding: 10px 16px;
 }
 
+.products {
+  color: brown;
+}
+
 @media (max-width: 960px) {
   .productpage {
     flex-direction: column;
