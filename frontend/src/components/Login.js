@@ -68,85 +68,78 @@ const Login = () => {
     history.push(path);
   };
 
-  const theme = createTheme({
-    status: {
-      danger: "#e53e3e",
-    },
-    palette: {
-      primary: {
-        main: "#0971f1",
-        darker: "#053e85",
-      },
-      neutral: {
-        main: "#64748B",
-        contrastText: "#fff",
-      },
-    },
-  });
   const header = {
     position: "-webkit-sticky",
     position: "sticky",
     top: "0",
-    backgroundColor: "black",
+    backgroundColor: "teal",
     color: "white",
     textAlign: "center",
-    height: "100px",
-    paddingTop: "20px",
+    height: "80px",
+    justifyContent: "center",
+    marginBottom: "20px",
+    marginTop: "20px",
+  };
+  const inputs = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   };
   return (
     <>
       <header style={header}>MY ACCOUNT</header>
-      <div
-        className="login"
-        style={{ display: "flex", flexDirection: "column" }}
-      >
-        <TextField
-          id="outlined-basic"
-          label="Email"
-          sx={{ m: 1, width: "25ch" }}
-          onChange={handleEmailChange}
-          // variant="outlined"
-        />
-        <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">
-            Password
-          </InputLabel>
-          <OutlinedInput
-            id="outlined-adornment-password"
-            type={hidden ? "password" : "text"}
-            value={user.password}
-            onChange={handlePasswordChange}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleVisibility}
-                  // onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {hidden ? <VisibilityOffIcon /> : <VisibilityIcon />}
-                </IconButton>
-              </InputAdornment>
-            }
-            label="Password"
-          />
-        </FormControl>
-        <a href="">Forgot your password?</a>
-        <ThemeProvider theme={theme}>
-          <Button
-            variant="contained"
+      <div className="login" style={inputs}>
+        <div>
+          <TextField
+            id="outlined-basic"
+            label="Email"
             sx={{ m: 1, width: "25ch" }}
-            color="neutral"
-            onClick={handleSubmit}
-          >
-            LOG IN
-          </Button>
-        </ThemeProvider>
+            onChange={handleEmailChange}
+            // variant="outlined"
+          />
+        </div>
+        <div>
+          <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
+            <InputLabel htmlFor="outlined-adornment-password">
+              Password
+            </InputLabel>
+            <OutlinedInput
+              id="outlined-adornment-password"
+              type={hidden ? "password" : "text"}
+              value={user.password}
+              onChange={handlePasswordChange}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleVisibility}
+                    // onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {hidden ? <VisibilityOffIcon /> : <VisibilityIcon />}
+                  </IconButton>
+                </InputAdornment>
+              }
+              label="Password"
+            />
+          </FormControl>
+        </div>
+        <a href="">Forgot your password?</a>
+
+        <Button
+          variant="contained"
+          sx={{ m: 1, width: "25ch" }}
+          onClick={handleSubmit}
+        >
+          LOG IN
+        </Button>
       </div>
       <div>
-        <p>I DON'T HAVE AN ACCOUNT YET</p>
-        <p>Get to save items and checkout your newest favourite!</p>
-        <button onClick={routeChange}>Create My Account</button>
+        <header style={header}>I DON'T HAVE AN ACCOUNT YET</header>
+        <div style={{ textAlign: "center" }}>
+          <p>Get to save items and checkout your newest favourite!</p>
+          <button onClick={routeChange}>Create My Account</button>
+        </div>
       </div>
     </>
   );

@@ -523,7 +523,6 @@ const Register = () => {
       <div
         className="section"
         id="register-email"
-        style={{ display: "flex", flexDirection: "column" }}
       >
         <p>Login Information</p>
         <TextField
@@ -545,9 +544,6 @@ const Register = () => {
         <Button
           variant="outlined"
           sx={{ m: 1, width: "25ch" }}
-          // onClick={() => {
-          //   console.log("click!");
-          // }}
           onClick={passwordRoute}
         >
           Next
