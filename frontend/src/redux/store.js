@@ -8,11 +8,13 @@ import {
   getProductsReducer,
   getProductDetailsReducer,
 } from "./reducers/productReducers";
+import userReducer from "./reducers/userReducer";
 
 const reducer = combineReducers({
   cart: cartReducer,
   getAllBags: getProductsReducer,
   getProductDetails: getProductDetailsReducer,
+  user: userReducer,
 });
 
 //creates an array that has all the middleware in it

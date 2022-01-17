@@ -13,32 +13,38 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+
   const [hidden, setHidden] = useState(true);
   const handleVisibility = () => {
     setHidden(!hidden);
   };
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
+  };
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("logging in!");
-    await fetch("/api/auth/login", {
+    await fetch("/apill/auth/login", {
       method: "POST",
       mode: "cors",
       data: JSON.stringify({ email: email, password: password }),
     });
   };
-  const history = useHistory();
 
+  //for the register button
+  const history = useHistory();
   const routeChange = () => {
     const path = "/register";
     history.push(path);
