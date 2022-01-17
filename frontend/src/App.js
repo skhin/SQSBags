@@ -17,6 +17,7 @@ import Backdrop from "./components/Backdrop";
 import SideDrawer from "./components/SideDrawer";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import { useSelector } from "react-redux";
 
 function App() {
   const [sideToggle, setSideToggle] = useState(false);
@@ -41,7 +42,8 @@ function App() {
       behavior: "smooth", // for smoothly scrolling
     });
   };
-
+  const user = useSelector((state) => state.user);
+  console.log(user);
   return (
     <div className="app">
       {showButton && (
