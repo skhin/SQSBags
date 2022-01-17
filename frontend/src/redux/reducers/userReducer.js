@@ -8,10 +8,17 @@ export const userSlice = createSlice({
     email: "",
     accessToken: "",
     phone: null,
+    password: "",
     isFetching: false,
     error: false,
   },
   reducers: {
+    setEmail: (state, action) => {
+      state.email = action.payload;
+    },
+    setPassword: (state, action) => {
+      state.password = action.payload;
+    },
     loginStart: (state) => {
       state.isFetching = true;
     },
@@ -22,6 +29,7 @@ export const userSlice = createSlice({
       state.email = action.payload.email;
       state.accessToken = action.payload.accessToken;
       state.phone = action.payload.phone;
+      state.password = action.payload.password;
       //state is like the actual thing, action.payload is like what you put in
     },
     loginFailure: (state) => {
@@ -31,5 +39,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { loginStart, loginSuccess, loginFailure } = userSlice.actions;
+export const { setEmail, setPassword, loginStart, loginSuccess, loginFailure } =
+  userSlice.actions;
 export default userSlice.reducer;

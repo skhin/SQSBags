@@ -15,6 +15,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  setEmail,
+  setPassword,
   loginStart,
   loginSuccess,
   loginFailure,
@@ -25,37 +27,45 @@ const Login = () => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [email, setEmail] = useState("");
 
   const [hidden, setHidden] = useState(true);
   const handleVisibility = () => {
     setHidden(!hidden);
   };
+
   const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+    dispatch(setEmail(e.target.value));
   };
   const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
+    dispatch(setPassword(e.target.value));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("logging in!");
-    const login = async (dispatch, user) => {
-      dispatch(loginStart());
-      try {
-        const res = await axios.post("/api/auth/login", user);
-        console.log(res);
-        dispatch(loginSuccess(res.data));
-      } catch (err) {
-        dispatch(loginFailure());
-      }
-    };
-    login(dispatch, { email, password });
+
+    dispatch(loginStart());
+    const res = await axios.post("/api/auth/login", {
+      email: user.email,
+      password: user.password,
+    });
+    dispatch(loginSuccess(res.data));
+
+    // const login = async (dispatch, data) => {
+    //   dispatch(loginStart());
+    //   try {
+    //     const res = await axios.post("/api/auth/login", data);
+    //     console.log(res);
+    //     dispatch(loginSuccess(res.data));
+    //   } catch (err) {
+    //     dispatch(loginFailure());
+    //   }
+    // };
+    // login(dispatch, { user.email, password });
   };
 
-  const { isFetching, error } = useSelector((state) => state.user);
   //for the register button
   const history = useHistory();
 
@@ -110,7 +120,7 @@ const Login = () => {
           <OutlinedInput
             id="outlined-adornment-password"
             type={hidden ? "password" : "text"}
-            value={password}
+            value={user.password}
             onChange={handlePasswordChange}
             endAdornment={
               <InputAdornment position="end">
