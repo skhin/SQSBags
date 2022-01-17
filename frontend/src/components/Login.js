@@ -14,11 +14,17 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import {
+  loginStart,
+  loginSuccess,
+  loginFailure,
+} from "../redux/reducers/userReducer";
+import axios from "axios";
 
 const Login = () => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  
+
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
@@ -33,14 +39,24 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     console.log("logging in!");
-    await fetch("/apill/auth/login", {
-      method: "POST",
-      mode: "cors",
-      data: JSON.stringify({ email: email, password: password }),
-    });
+    // await fetch("/api/auth/login", {
+    //   method: "POST",
+    //   mode: "cors",
+    //   data: JSON.stringify({ email: email, password: password }),
+    // });
+    const login = async (dispatch, user) => {
+      dispatch(loginStart());
+      try {
+        const res = await axios.post("/api/auth/login", user);
+        dispatch(loginSuccess(res.data));
+      } catch (err) {
+        dispatch(loginFailure());
+      }
+    };
+    login(dispatch, { email, password });
   };
 
   //for the register button
