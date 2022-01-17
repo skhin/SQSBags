@@ -14,13 +14,7 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setEmail,
-  setPassword,
-  loginStart,
-  loginSuccess,
-  loginFailure,
-} from "../redux/reducers/userReducer";
+import { userActions } from "../redux/reducers/userReducer";
 import axios from "axios";
 
 const Login = () => {
@@ -36,22 +30,22 @@ const Login = () => {
   };
 
   const handleEmailChange = (e) => {
-    dispatch(setEmail(e.target.value));
+    dispatch(userActions.setEmail(e.target.value));
   };
   const handlePasswordChange = (e) => {
-    dispatch(setPassword(e.target.value));
+    dispatch(userActions.setPassword(e.target.value));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("logging in!");
 
-    dispatch(loginStart());
+    dispatch(userActions.loginStart());
     const res = await axios.post("/api/auth/login", {
       email: user.email,
       password: user.password,
     });
-    dispatch(loginSuccess(res.data));
+    dispatch(userActions.loginSuccess(res.data));
 
     // const login = async (dispatch, data) => {
     //   dispatch(loginStart());
