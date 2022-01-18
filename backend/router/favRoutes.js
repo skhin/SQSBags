@@ -46,7 +46,7 @@ router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
 });
 
 //GET FAVOURITES
-router.get("/fav/:userid", verifyTokenAndAuthorization, async (req, res) => {
+router.get("/:userid", verifyTokenAndAuthorization, async (req, res) => {
   try {
     const favourites = await Favourites.findOne({ userID: req.params.userid });
     res.status(200).json(favourites);
