@@ -136,7 +136,13 @@ const Login = () => {
         <header style={header}>I DON'T HAVE AN ACCOUNT YET</header>
         <div style={{ textAlign: "center" }}>
           <p>Get to save items and checkout your newest favourite!</p>
-          <button onClick={routeChange}>Create My Account</button>
+          <Button
+            variant="outlined"
+            sx={{ m: 1, width: "25ch" }}
+            onClick={routeChange}
+          >
+            Create My Account
+          </Button>
         </div>
       </div>
     </>
