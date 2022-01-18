@@ -10,6 +10,7 @@ import HomePage from "./pages/HomePage";
 import ProductPage from "./pages/ProductPage";
 import CartPage from "./pages/CartPage";
 import ShopPage from "./pages/ShopPage";
+import Checkout from "./pages/Checkout"
 
 // Components Import
 import Navbar from "./components/Navbar";
@@ -64,6 +65,7 @@ function App() {
             <Route exact path="/bags/:id" component={ProductPage} />
             <Route exact path="/cart" component={CartPage} />
             <Route exact path="/register" component={Register} />
+            <Route exact path = "/checkout"><Checkout/></Route>
           </Switch>
         </main>
       </Router>

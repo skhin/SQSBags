@@ -2,7 +2,7 @@ import React from "react";
 import "./CartPage.css";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 // Components
 import CartItem from "../components/CartItem";
@@ -35,6 +35,11 @@ const CartPage = () => {
       .reduce((price, item) => price + item.price * item.qty, 0)
       .toFixed(2);
   };
+  const history = useHistory();
+  const checkout = () => {
+    const path = "/checkout";
+    history.push(path);
+  };
   return (
     <div className="cart-page">
       {" "}
@@ -62,7 +67,7 @@ const CartPage = () => {
           <p>${getCartSubTotal()}</p>
         </div>
         <div>
-          <button>Proceed To Checkout</button>
+          <button onClick = {checkout}>Proceed To Checkout</button>
         </div>
       </div>
     </div>
