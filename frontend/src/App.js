@@ -19,6 +19,7 @@ import SideDrawer from "./components/SideDrawer";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import { useSelector } from "react-redux";
+import ForgotPassword from "./pages/ForgotPassword";
 
 function App() {
   const [sideToggle, setSideToggle] = useState(false);
@@ -66,6 +67,7 @@ function App() {
             <Route exact path="/cart" component={CartPage} />
             <Route exact path="/register" component={Register} />
             <Route exact path = "/checkout"><Checkout/></Route>
+            <Route exact path = "/forgotPassword"><ForgotPassword/></Route>
           </Switch>
         </main>
       </Router>

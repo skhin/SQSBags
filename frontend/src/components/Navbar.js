@@ -23,6 +23,12 @@ const Navbar = (click) => {
           LOGOUT
         </button>
       );
+    } else {
+      return (
+        <Link to="/login" className="login__link">
+          LOGIN
+        </Link>
+      );
     }
   };
 
@@ -46,10 +52,6 @@ const Navbar = (click) => {
         <div className="navbar__center">
           <Link to="/shop" className="shop__link">
             SHOP
-          </Link>
-          <span> </span>
-          <Link to="/login" className="login__link">
-            LOGIN
           </Link>
           <span> </span>
           {isLoggedIn()}

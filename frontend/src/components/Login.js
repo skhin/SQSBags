@@ -43,6 +43,7 @@ const Login = () => {
       email: user.email,
       password: user.password,
     });
+    console.log(res);
     dispatch(userActions.loginSuccess(res.data));
     history.goBack();
   };
@@ -122,7 +123,7 @@ const Login = () => {
         <p className="error" style={error}>
           You have input a wrong username or password.
         </p>
-        <a href="">Forgot your password?</a>
+        <a href="/forgotPassword">Forgot your password?</a>
         <Button
           variant="outlined"
           sx={{ m: 1, width: "25ch" }}
