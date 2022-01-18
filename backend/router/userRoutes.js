@@ -51,6 +51,32 @@ router.get("/find/:id", verifyTokenAndAdmin, async (req, res) => {
   }
 });
 
+//GET USER BY EMAIL
+router.get("/find/email/:email", verifyTokenAndAdmin, async (req, res) => {
+  try {
+    const user = await Users.find(
+      { email: req.params.email },
+      { password: false }
+    );
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//GET USER BY NAME
+router.get("/find/name/:name", verifyTokenAndAdmin, async (req, res) => {
+  try {
+    const user = await Users.find(
+      { name: req.params.name },
+      { password: false }
+    );
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 //GET ALL USER
 router.get("/", verifyTokenAndAdmin, async (req, res) => {
   try {
@@ -60,6 +86,5 @@ router.get("/", verifyTokenAndAdmin, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
 
 module.exports = router;
