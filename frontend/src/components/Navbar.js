@@ -1,7 +1,7 @@
 import React from "react";
 import "./Navbar.css";
 import logo from "./logo.png";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Input } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
 import { useSelector, useDispatch } from "react-redux";
@@ -10,18 +10,33 @@ import { userActions } from "../redux/reducers/userReducer";
 const Navbar = (click) => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const logout = (e) => {
     e.preventDefault();
     dispatch(userActions.logout());
+    const path = "/";
+    history.push(path);
   };
 
   const isLoggedIn = () => {
     if (user.accessToken !== "") {
       return (
-        <button className="logout__link" onClick={logout}>
-          LOGOUT
-        </button>
+        <>
+          <Link to="/profile">
+            <i class="fa-solid fa-user"></i>
+          </Link>
+          <span> </span>
+          <button className="logout__link" onClick={logout}>
+            LOGOUT
+          </button>
+        </>
+      );
+    } else {
+      return (
+        <Link to="/login" className="login__link">
+          LOGIN
+        </Link>
       );
     }
   };
@@ -46,10 +61,6 @@ const Navbar = (click) => {
         <div className="navbar__center">
           <Link to="/shop" className="shop__link">
             SHOP
-          </Link>
-          <span> </span>
-          <Link to="/login" className="login__link">
-            LOGIN
           </Link>
           <span> </span>
           {isLoggedIn()}

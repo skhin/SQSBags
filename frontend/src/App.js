@@ -10,7 +10,7 @@ import HomePage from "./pages/HomePage";
 import ProductPage from "./pages/ProductPage";
 import CartPage from "./pages/CartPage";
 import ShopPage from "./pages/ShopPage";
-import Checkout from "./pages/Checkout"
+import Checkout from "./pages/Checkout";
 
 // Components Import
 import Navbar from "./components/Navbar";
@@ -19,6 +19,8 @@ import SideDrawer from "./components/SideDrawer";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import { useSelector } from "react-redux";
+import ForgotPassword from "./pages/ForgotPassword";
+import Profile from "./components/Profile";
 
 function App() {
   const [sideToggle, setSideToggle] = useState(false);
@@ -65,7 +67,15 @@ function App() {
             <Route exact path="/bags/:id" component={ProductPage} />
             <Route exact path="/cart" component={CartPage} />
             <Route exact path="/register" component={Register} />
-            <Route exact path = "/checkout"><Checkout/></Route>
+            <Route exact path="/checkout">
+              <Checkout />
+            </Route>
+            <Route exact path="/forgotPassword">
+              <ForgotPassword />
+            </Route>
+            <Route exact path="/profile">
+              <Profile />
+            </Route>
           </Switch>
         </main>
       </Router>

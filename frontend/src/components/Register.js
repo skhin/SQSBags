@@ -505,7 +505,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("new user!");
-
+    //throw to database
     const res = await axios.post("/api/auth/register", {
       name: user.fname + " " + user.lname,
       email: user.email,
@@ -514,7 +514,7 @@ const Register = () => {
       phone: user.phone,
     });
     console.log(res);
-    dispatch(userActions.registerSuccess(res.data));
+    dispatch(userActions.registerSuccess(res.data));//throws to state
     history.goBack();
   };
 
