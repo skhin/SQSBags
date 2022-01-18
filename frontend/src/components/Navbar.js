@@ -1,7 +1,7 @@
 import React from "react";
 import "./Navbar.css";
 import logo from "./logo.png";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Input } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
 import { useSelector, useDispatch } from "react-redux";
@@ -10,10 +10,13 @@ import { userActions } from "../redux/reducers/userReducer";
 const Navbar = (click) => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const logout = (e) => {
     e.preventDefault();
     dispatch(userActions.logout());
+    const path = "/";
+    history.push(path);
   };
 
   const isLoggedIn = () => {
