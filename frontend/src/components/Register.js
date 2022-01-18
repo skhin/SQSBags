@@ -515,34 +515,51 @@ const Register = () => {
     dispatch(userActions.registerSuccess(res.data));
   };
 
+  const [email1, setEmail1] = useState("");
+  const handleEmail1Change = (e) => {
+    setEmail1(e.target.value);
+  };
+  const emailCheck = (email1, email2) => {
+    return email1 === "" || email1 !== email2;
+  };
+
+  const passwordCheck = (password1, password2) => {
+    return password1 === "" || password1 !== password2;
+  };
+
+  const submissionCheck = () => {
+    return (user.fname === "") || (user.lname = "") || (user.address = "") || (user.country = "") || (user.countryCode = "") || (user.postal = "") || (user.phone = null)
+  }
+
   return (
     <>
       <header>
         <p>CREATE A NEW ACCOUNT</p>
       </header>
-      <div
-        className="section"
-        id="register-email"
-      >
+      <div className="section" id="register-email">
         <p>Login Information</p>
         <TextField
           id="outlined-basic"
           label="Email"
           sx={{ m: 1, width: "25ch" }}
-          type="email"
+          type="string"
+          value={email1}
+          onChange={handleEmail1Change}
           // variant="outlined"
         />
         <TextField
           id="outlined-basic"
           label="Confirm Email"
           sx={{ m: 1, width: "25ch" }}
-          type="email"
+          type="string"
+          value={user.email}
           onChange={handleEmailChange}
           // variant="outlined"
         />
 
         <Button
           variant="outlined"
+          disabled={emailCheck(email1, user.email)}
           sx={{ m: 1, width: "25ch" }}
           onClick={passwordRoute}
         >
@@ -609,6 +626,7 @@ const Register = () => {
           // onClick={() => {
           //   console.log("click!");
           // }}
+          disabled={passwordCheck(password, user.password)}
           onClick={particularsRoute}
         >
           Next
@@ -711,6 +729,7 @@ const Register = () => {
           variant="outlined"
           sx={{ m: 1, width: "52ch" }}
           onClick={handleSubmit}
+          disabled = {emailCheck || passwordCheck || submissionCheck}
         >
           Done
         </Button>
