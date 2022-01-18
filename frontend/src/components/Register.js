@@ -14,6 +14,9 @@ import {
 } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { useDispatch, useSelector } from "react-redux";
+import { userActions } from "../redux/reducers/userReducer";
+import axios from "axios";
 
 //can use state to check the fields
 const Register = () => {
@@ -441,34 +444,75 @@ const Register = () => {
     { code: "ZM", label: "Zambia", phone: "260" },
     { code: "ZW", label: "Zimbabwe", phone: "263" },
   ];
+  //for password input visibility toggle
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  // const [confirmPassword, setConfirmPassword] = useState("");
   const [hidden, setHidden] = useState(true);
   const handleVisibility = () => {
     setHidden(!hidden);
   };
-
   const [hidden2, setHidden2] = useState(true);
   const handleVisibility2 = () => {
     setHidden2(!hidden2);
-    console.log(hidden);
   };
   const handleChange = (e) => {
     setPassword(e.target.value);
   };
-  const handleChange2 = (e) => {
-    console.log(e.target);
-    setConfirmPassword(e.target.value);
-  };
-
+  // const handleChange2 = (e) => {
+  //   setConfirmPassword(e.target.value);
+  // };
+  //to move form from one section to another
   const passwordRef = useRef(null);
   const passwordRoute = () => {
     passwordRef.current.scrollIntoView();
   };
-
   const particularsRef = useRef(null);
   const particularsRoute = () => {
     particularsRef.current.scrollIntoView();
+  };
+  //to submit data for user profile creation
+  const dispatch = useDispatch();
+  const handleEmailChange = (e) => {
+    dispatch(userActions.setEmail(e.target.value));
+  };
+  const handlePasswordChange = (e) => {
+    dispatch(userActions.setPassword(e.target.value));
+  };
+  const handleFNameChange = (e) => {
+    dispatch(userActions.setFirstName(e.target.value));
+  };
+  const handleLNameChange = (e) => {
+    dispatch(userActions.setLastName(e.target.value));
+  };
+  const handleAddressChange = (e) => {
+    dispatch(userActions.setAddress(e.target.value));
+  };
+  const handleCountryChange = (e) => {
+    dispatch(userActions.setCountry(e.target.value));
+  };
+  const handleLPostalChange = (e) => {
+    dispatch(userActions.setPostal(e.target.value));
+  };
+  const handleCountryCodeChange = (e) => {
+    dispatch(userActions.setCountryCode(e.target.value));
+  };
+  const handlePhoneChange = (e) => {
+    dispatch(userActions.setPhone(e.target.value));
+  };
+  const user = useSelector((state) => state.user);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("new user!");
+
+    const res = await axios.post("/api/auth/register", {
+      name: user.fname + " " + user.lname,
+      email: user.email,
+      password: user.password,
+      address: user.address + " " + user.country + user.postal,
+      phone: user.phone,
+    });
+    console.log(res);
+    dispatch(userActions.registerSuccess(res.data));
   };
 
   return (
@@ -479,7 +523,6 @@ const Register = () => {
       <div
         className="section"
         id="register-email"
-        style={{ display: "flex", flexDirection: "column" }}
       >
         <p>Login Information</p>
         <TextField
@@ -494,15 +537,13 @@ const Register = () => {
           label="Confirm Email"
           sx={{ m: 1, width: "25ch" }}
           type="email"
+          onChange={handleEmailChange}
           // variant="outlined"
         />
 
         <Button
           variant="outlined"
           sx={{ m: 1, width: "25ch" }}
-          // onClick={() => {
-          //   console.log("click!");
-          // }}
           onClick={passwordRoute}
         >
           Next
@@ -546,8 +587,8 @@ const Register = () => {
           <OutlinedInput
             id="outlined-adornment-password"
             type={hidden2 ? "password" : "text"}
-            value={confirmPassword}
-            onChange={handleChange2}
+            // value={confirmPassword}
+            onChange={handlePasswordChange}
             endAdornment={
               <InputAdornment position="end">
                 <IconButton
@@ -587,27 +628,23 @@ const Register = () => {
             sx={{ m: 1, width: "25ch" }}
             type="email"
             // variant="outlined"
+            onChange={handleFNameChange}
           />
           <TextField
             id="outlined-basic"
             label="Last name"
             sx={{ m: 1, width: "25ch" }}
             type="text"
+            onChange={handleLNameChange}
             // variant="outlined"
           />
         </div>
         <TextField
           id="outlined-basic"
-          label="Address line 1"
+          label="Address"
           sx={{ m: 1, width: "52ch" }}
           type="text"
-          // variant="outlined"
-        />
-        <TextField
-          id="outlined-basic"
-          label="Address line 2"
-          sx={{ m: 1, width: "52ch" }}
-          type="text"
+          onChange={handleAddressChange}
           // variant="outlined"
         />
         <div className="postal" style={{ display: "flex" }}>
@@ -616,6 +653,7 @@ const Register = () => {
             label="Country"
             sx={{ m: 1, width: "25ch" }}
             type="text"
+            onChange={handleCountryChange}
             // variant="outlined"
           />
           <TextField
@@ -623,11 +661,12 @@ const Register = () => {
             label="Postal Code"
             sx={{ m: 1, width: "25ch" }}
             type="text"
+            onChange={handleLPostalChange}
             // variant="outlined"
           />
         </div>
         <div className="contact" style={{ display: "flex" }}>
-          <Autocomplete
+          {/* <Autocomplete
             sx={{ width: "25ch" }}
             options={countries}
             autoHighlight
@@ -658,22 +697,20 @@ const Register = () => {
                 }}
               />
             )}
-          />
+          /> */}
           <TextField
             id="outlined-basic"
             label="Phone Number"
-            sx={{ m: 1, width: "25ch" }}
+            sx={{ m: 1, width: "52ch" }}
             type="number"
+            onChange={handlePhoneChange}
             // variant="outlined"
           />
         </div>
         <Button
           variant="outlined"
           sx={{ m: 1, width: "52ch" }}
-          // onClick={() => {
-          //   console.log("click!");
-          // }}
-          href="/#register-password"
+          onClick={handleSubmit}
         >
           Done
         </Button>
