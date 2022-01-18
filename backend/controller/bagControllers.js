@@ -29,9 +29,8 @@ const getBagByID = async (req, res) => {
 const createNewBag = async (req, res) => {
   try {
     await BagsModel.create(req.body);
-    const bag = await BagsModel.findById(req.params.id);
 
-    res.json(bag);
+    res.status(200).json(req.body);
   } catch (error) {
     console.error(error);
     res.status(403).json({ status: "fail", message: "Server Error" });
@@ -41,7 +40,7 @@ const createNewBag = async (req, res) => {
 const editBag = async (req, res) => {
   try {
     response = await BagsModel.findByIdAndUpdate(
-      { _id: req.params.id },
+      req.params.id,
       {
         $set: req.body,
       },
@@ -64,7 +63,7 @@ const deleteBag = async (req, res) => {
       useFindAndModify: false,
     });
 
-    res.send({ status: successful });
+    res.status(200).json("Bag Deleted!");
   } catch (error) {
     console.error(error);
     res.status(403).json({ status: "fail", message: "Server Error" });
