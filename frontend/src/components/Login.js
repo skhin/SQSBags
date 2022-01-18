@@ -46,18 +46,6 @@ const Login = () => {
       password: user.password,
     });
     dispatch(userActions.loginSuccess(res.data));
-
-    // const login = async (dispatch, data) => {
-    //   dispatch(loginStart());
-    //   try {
-    //     const res = await axios.post("/api/auth/login", data);
-    //     console.log(res);
-    //     dispatch(loginSuccess(res.data));
-    //   } catch (err) {
-    //     dispatch(loginFailure());
-    //   }
-    // };
-    // login(dispatch, { user.email, password });
   };
 
   //for the register button
@@ -85,6 +73,10 @@ const Login = () => {
     flexDirection: "column",
     alignItems: "center",
   };
+
+  const submissionCheck = (a,b) => {
+    return a === "" || b === ""
+  }
   return (
     <>
       <header style={header}>MY ACCOUNT</header>
@@ -127,9 +119,10 @@ const Login = () => {
         <a href="">Forgot your password?</a>
 
         <Button
-          variant="contained"
+          variant="outlined"
           sx={{ m: 1, width: "25ch" }}
           onClick={handleSubmit}
+          disabled = {submissionCheck(user.email,user.password)}
         >
           LOG IN
         </Button>
