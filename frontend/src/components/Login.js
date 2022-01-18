@@ -11,7 +11,6 @@ import {
 } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "../redux/reducers/userReducer";
@@ -40,22 +39,22 @@ const Login = () => {
     e.preventDefault();
     console.log("logging in!");
 
-    dispatch(userActions.loginStart());
     const res = await axios.post("/api/auth/login", {
       email: user.email,
       password: user.password,
     });
     dispatch(userActions.loginSuccess(res.data));
+    history.goBack();
   };
 
   //for the register button
   const history = useHistory();
-
   const routeChange = () => {
     const path = "/register";
     history.push(path);
   };
 
+  //style objects
   const header = {
     position: "-webkit-sticky",
     position: "sticky",
@@ -73,10 +72,14 @@ const Login = () => {
     flexDirection: "column",
     alignItems: "center",
   };
+  const error = {
+    color: "red",
+    display: "none",
+  };
 
-  const submissionCheck = (a,b) => {
-    return a === "" || b === ""
-  }
+  const submissionCheck = (a, b) => {
+    return a === "" || b === "";
+  };
   return (
     <>
       <header style={header}>MY ACCOUNT</header>
@@ -116,13 +119,15 @@ const Login = () => {
             />
           </FormControl>
         </div>
+        <p className="error" style={error}>
+          You have input a wrong username or password.
+        </p>
         <a href="">Forgot your password?</a>
-
         <Button
           variant="outlined"
           sx={{ m: 1, width: "25ch" }}
           onClick={handleSubmit}
-          disabled = {submissionCheck(user.email,user.password)}
+          disabled={submissionCheck(user.email, user.password)}
         >
           LOG IN
         </Button>

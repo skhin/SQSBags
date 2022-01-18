@@ -13,8 +13,6 @@ export const userSlice = createSlice({
     countryCode: "",
     phone: null,
     password: "",
-    isFetching: false,
-    error: false,
   },
   reducers: {
     setFirstName: (state, action) => {
@@ -44,11 +42,7 @@ export const userSlice = createSlice({
     setPassword: (state, action) => {
       state.password = action.payload;
     },
-    loginStart: (state) => {
-      state.isFetching = true;
-    },
     loginSuccess: (state, action) => {
-      state.isFetching = false;
       state.name = action.payload.name;
       state.address = action.payload.address;
       state.email = action.payload.email;
@@ -57,16 +51,24 @@ export const userSlice = createSlice({
       state.password = action.payload.password;
       //state is like the actual thing, action.payload is like what you put in
     },
-    loginFailure: (state) => {
-      state.isFetching = false;
-      state.error = true;
-    },
     registerSuccess: (state, action) => {
       state.name = action.payload.name;
       state.address = action.payload.address;
       state.email = action.payload.email;
       state.phone = action.payload.phone;
       state.password = action.payload.password;
+    },
+    logout: (state) => {
+      state.fname = "";
+      state.lname = "";
+      state.address = "";
+      state.email = "";
+      state.accessToken = "";
+      state.country = "";
+      state.postal = "";
+      state.countryCode = "";
+      state.phone = null;
+      state.password = "";
     },
   },
 });

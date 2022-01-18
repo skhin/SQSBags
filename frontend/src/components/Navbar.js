@@ -4,8 +4,28 @@ import logo from "./logo.png";
 import { Link } from "react-router-dom";
 import { Input } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
+import { useSelector, useDispatch } from "react-redux";
+import { userActions } from "../redux/reducers/userReducer";
 
 const Navbar = (click) => {
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
+  const logout = (e) => {
+    e.preventDefault();
+    dispatch(userActions.logout());
+  };
+
+  const isLoggedIn = () => {
+    if (user.accessToken !== "") {
+      return (
+        <button className="logout__link" onClick={logout}>
+          LOGOUT
+        </button>
+      );
+    }
+  };
+
   return (
     <div>
       <nav className="navbar">
@@ -27,9 +47,12 @@ const Navbar = (click) => {
           <Link to="/shop" className="shop__link">
             SHOP
           </Link>
+          <span> </span>
           <Link to="/login" className="login__link">
             LOGIN
           </Link>
+          <span> </span>
+          {isLoggedIn()}
         </div>
         <div className="navbar__right">
           <ul className="navbar__links">
