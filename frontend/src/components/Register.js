@@ -17,6 +17,7 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "../redux/reducers/userReducer";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 //can use state to check the fields
 const Register = () => {
@@ -500,6 +501,7 @@ const Register = () => {
     dispatch(userActions.setPhone(e.target.value));
   };
   const user = useSelector((state) => state.user);
+  const history = useHistory();
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("new user!");
@@ -513,6 +515,7 @@ const Register = () => {
     });
     console.log(res);
     dispatch(userActions.registerSuccess(res.data));
+    history.goBack();
   };
 
   const [email1, setEmail1] = useState("");
@@ -528,8 +531,15 @@ const Register = () => {
   };
 
   const submissionCheck = () => {
-    return (user.fname === "") || (user.lname = "") || (user.address = "") || (user.country = "") || (user.countryCode = "") || (user.postal = "") || (user.phone = null)
-  }
+    return (
+      user.fname === "" ||
+      user.lname === "" ||
+      user.address === "" ||
+      user.country === "" ||
+      user.postal === "" ||
+      user.phone === null
+    );
+  };
 
   return (
     <>
@@ -729,7 +739,11 @@ const Register = () => {
           variant="outlined"
           sx={{ m: 1, width: "52ch" }}
           onClick={handleSubmit}
-          disabled = {emailCheck || passwordCheck || submissionCheck}
+          disabled={
+            emailCheck(email1, user.email) ||
+            passwordCheck(password, user.password) ||
+            submissionCheck()
+          }
         >
           Done
         </Button>
