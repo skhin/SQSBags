@@ -6,6 +6,8 @@ import { Input } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
 import { useSelector, useDispatch } from "react-redux";
 import { userActions } from "../redux/reducers/userReducer";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const Navbar = (click) => {
   const user = useSelector((state) => state.user);
@@ -41,6 +43,52 @@ const Navbar = (click) => {
     }
   };
 
+  // ********************* //
+
+  const [searchText, setsearch] = useState("");
+  const [bagsData, setbagsData] = useState([]);
+
+  let matches = [];
+  const handleSearchInput = (e) => {
+    setsearch(e.target.value);
+    if (searchText.length > 0) {
+      let suggest = bagsData.filter((bags) => {
+        return bags.color.toLowerCase().includes(searchText.toLowerCase());
+      });
+
+      suggest.push(
+        bagsData.filter((bags) => {
+          return bags.type.toLowerCase().includes(searchText.toLowerCase());
+        })
+      );
+
+      suggest.push(
+        bagsData.filter((bags) => {
+          return bags.name.toLowerCase().includes(searchText.toLowerCase());
+        })
+      );
+      matches = suggest;
+      console.log(matches);
+    }
+  };
+
+  const handleSearchOutput = (e) => {
+    if (searchText === null || searchText.trim() === "")
+      console.log("Empty Search");
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const { data } = await axios.get("/api/bags");
+    setbagsData(data);
+  };
+  // console.log(bagsData);
+
+  // ********************* //
+
   return (
     <div>
       <nav className="navbar">
@@ -53,8 +101,17 @@ const Navbar = (click) => {
           </div>
           <div className="navbar__search__container">
             <div className="navbar__input">
-              <Input placeholder="Search" />
-              <Search style={{ color: "gray", fontSize: 16 }} />
+              {/* <Input placeholder="Search" />
+              <Search style={{ color: "gray", fontSize: 16 }} /> */}
+              <Input
+                placeholder="Search"
+                onChange={handleSearchInput}
+                value={searchText}
+              />
+              <Search
+                style={{ color: "gray", fontSize: 16, cursor: "pointer" }}
+                onClick={handleSearchOutput}
+              />
             </div>
           </div>
         </div>

@@ -1,15 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
+// import { useLocation } from "react-router";
 import "./ProductList.css";
 
-const Filter = () => {
+const Filter = (props) => {
+  // const location = useLocation();
+  // const cat = location.pathname.split("/")[2];
+
+  // const [filters, setFilters] = useState({});
+  // const [sort, setSort] = useState("newest");
+
+  let { filters, setFilters, setSort } = props;
+
+  const handleFilters = (e) => {
+    const value = e.target.value;
+    console.log(value);
+    setFilters({
+      ...filters,
+      [e.target.name]: value,
+    });
+  };
+
   return (
     <div className="filter__container">
       <div className="filter">
         <div className="filtertext">Filter Products:</div>
-        <select>
-          <option disabled selected>
-            Color
-          </option>
+        <select name="color" onChange={handleFilters}>
+          <option disabled>Color</option>
           <option>White</option>
           <option>Black</option>
           <option>Red</option>
@@ -21,10 +37,8 @@ const Filter = () => {
           <option>Others</option>
         </select>
 
-        <select>
-          <option disabled selected>
-            Material
-          </option>
+        <select name="material" onChange={handleFilters}>
+          <option disabled>Material</option>
           <option>Leather</option>
           <option>Canvas</option>
           <option>Straw</option>
@@ -32,10 +46,8 @@ const Filter = () => {
           <option>Others</option>
         </select>
 
-        <select>
-          <option disabled selected>
-            Type
-          </option>
+        <select name="type" onChange={handleFilters}>
+          <option disabled>Type</option>
           <option>Handbag</option>
           <option>Briefcase</option>
           <option>Tote</option>
@@ -47,10 +59,10 @@ const Filter = () => {
 
       <div className="filter">
         <div className="filtertext">Sort Products:</div>
-        <select>
-          <option selected>Newest</option>
-          <option>Price (asc)</option>
-          <option>Price (desc)</option>
+        <select onChange={(e) => setSort(e.target.value)}>
+          <option value="newest">Newest</option>
+          <option value="asc">Price (asc)</option>
+          <option value="desc">Price (desc)</option>
         </select>
       </div>
     </div>

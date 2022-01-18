@@ -19,10 +19,10 @@ hr {
   margin-bottom: 50px;
 }
 
-.homepage__products {
+/* .homepage__products {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-}
+} */
 
 @media (max-width: 1232px) {
   .homepage__products {

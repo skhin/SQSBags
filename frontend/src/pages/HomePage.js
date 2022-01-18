@@ -1,28 +1,59 @@
 import React from "react";
 import "./HomePage.css";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import axios from "axios";
+// import { useDispatch, useSelector } from "react-redux";
 
 // Components
 import Product from "../components/Product";
 
 //Actions
-import { getAllBags as listProducts } from "../redux/actions/productActions";
+// import { getAllBags as listProducts } from "../redux/actions/productActions";
 import ShopPage from "./ShopPage";
 
 const HomePage = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  // get the data info
-  const getAllBags = useSelector((state) => state.getAllBags);
+  // // get the data info
+  // const getAllBags = useSelector((state) => state.getAllBags);
 
-  // destructure the products. Before loading anything. it will check for error
-  const { products, loading, error } = getAllBags;
-  const products2 = products.concat(products);
-  // every time the page loads, it lists the items
+  // // destructure the products. Before loading anything. it will check for error
+  // const { products, loading, error } = getAllBags;
+  // const products2 = products.concat(products);
+  // // every time the page loads, it lists the items
+  // useEffect(() => {
+  //   dispatch(listProducts());
+  // }, [dispatch]);
+
+  const [products, setProducts] = useState([]);
+  const [error, setError] = useState(false);
+  const [loading, setloading] = useState(true);
+
   useEffect(() => {
-    dispatch(listProducts());
-  }, [dispatch]);
+    getAllBags();
+  }, []);
+
+  useEffect(() => {
+    getAllBags();
+  }, []);
+
+  const getAllBags = async () => {
+    try {
+      const { data } = await axios.get("/api/bags");
+      setProducts(data);
+      console.log(products);
+      setloading(false);
+    } catch (err) {
+      console.log(err);
+      const errMsg =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+
+      setError(errMsg);
+      setloading(false);
+    }
+  };
 
   return (
     <div className="homepage">
@@ -38,7 +69,7 @@ const HomePage = () => {
             ) : error ? (
               <h2>{error}</h2>
             ) : (
-              products2.map((product) => (
+              products.map((product) => (
                 <div className="slide">
                   <Product
                     key={product._id}
