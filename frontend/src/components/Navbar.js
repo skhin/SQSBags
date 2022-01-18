@@ -19,9 +19,15 @@ const Navbar = (click) => {
   const isLoggedIn = () => {
     if (user.accessToken !== "") {
       return (
-        <button className="logout__link" onClick={logout}>
-          LOGOUT
-        </button>
+        <>
+          <Link to="/profile">
+            <i class="fa-solid fa-user"></i>
+          </Link>
+          <span> </span>
+          <button className="logout__link" onClick={logout}>
+            LOGOUT
+          </button>
+        </>
       );
     } else {
       return (
