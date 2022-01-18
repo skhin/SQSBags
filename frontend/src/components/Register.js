@@ -479,11 +479,8 @@ const Register = () => {
   const handlePasswordChange = (e) => {
     dispatch(userActions.setPassword(e.target.value));
   };
-  const handleFNameChange = (e) => {
-    dispatch(userActions.setFirstName(e.target.value));
-  };
-  const handleLNameChange = (e) => {
-    dispatch(userActions.setLastName(e.target.value));
+  const handleNameChange = (e) => {
+    dispatch(userActions.setName(e.target.value));
   };
   const handleAddressChange = (e) => {
     dispatch(userActions.setAddress(e.target.value));
@@ -491,7 +488,7 @@ const Register = () => {
   const handleCountryChange = (e) => {
     dispatch(userActions.setCountry(e.target.value));
   };
-  const handleLPostalChange = (e) => {
+  const handlePostalChange = (e) => {
     dispatch(userActions.setPostal(e.target.value));
   };
   const handleCountryCodeChange = (e) => {
@@ -507,14 +504,16 @@ const Register = () => {
     console.log("new user!");
     //throw to database
     const res = await axios.post("/api/auth/register", {
-      name: user.fname + " " + user.lname,
+      name: user.name,
       email: user.email,
       password: user.password,
-      address: user.address + " " + user.country + user.postal,
+      address: user.address,
+      country: user.country,
+      postal: user.postal,
       phone: user.phone,
     });
     console.log(res);
-    dispatch(userActions.registerSuccess(res.data));//throws to state
+    dispatch(userActions.registerSuccess(res.data)); //throws to state
     history.goBack();
   };
 
@@ -532,8 +531,7 @@ const Register = () => {
 
   const submissionCheck = () => {
     return (
-      user.fname === "" ||
-      user.lname === "" ||
+      user.name === "" ||
       user.address === "" ||
       user.country === "" ||
       user.postal === "" ||
@@ -649,24 +647,16 @@ const Register = () => {
         style={{ display: "flex", flexDirection: "column" }}
       >
         <p>Particulars</p>
-        <div className="name" style={{ display: "flex" }}>
-          <TextField
-            id="outlined-basic"
-            label="First name"
-            sx={{ m: 1, width: "25ch" }}
-            type="email"
-            // variant="outlined"
-            onChange={handleFNameChange}
-          />
-          <TextField
-            id="outlined-basic"
-            label="Last name"
-            sx={{ m: 1, width: "25ch" }}
-            type="text"
-            onChange={handleLNameChange}
-            // variant="outlined"
-          />
-        </div>
+
+        <TextField
+          id="outlined-basic"
+          label="Name"
+          sx={{ m: 1, width: "52ch" }}
+          type="text"
+          // variant="outlined"
+          onChange={handleNameChange}
+        />
+
         <TextField
           id="outlined-basic"
           label="Address"
@@ -689,7 +679,7 @@ const Register = () => {
             label="Postal Code"
             sx={{ m: 1, width: "25ch" }}
             type="text"
-            onChange={handleLPostalChange}
+            onChange={handlePostalChange}
             // variant="outlined"
           />
         </div>

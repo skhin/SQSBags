@@ -18,9 +18,9 @@ import Backdrop from "./components/Backdrop";
 import SideDrawer from "./components/SideDrawer";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import { useSelector } from "react-redux";
 import ForgotPassword from "./pages/ForgotPassword";
 import Profile from "./components/Profile";
+import EditProfile from "./components/EditProfile";
 
 function App() {
   const [sideToggle, setSideToggle] = useState(false);
@@ -45,8 +45,6 @@ function App() {
       behavior: "smooth", // for smoothly scrolling
     });
   };
-  const user = useSelector((state) => state.user);
-  console.log(user);
   return (
     <div className="app">
       {showButton && (
@@ -75,6 +73,9 @@ function App() {
             </Route>
             <Route exact path="/profile">
               <Profile />
+            </Route>
+            <Route exact path="/profile/edit">
+              <EditProfile />
             </Route>
           </Switch>
         </main>

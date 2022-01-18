@@ -3,8 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const userSlice = createSlice({
   name: "user", //store name
   initialState: {
-    fname: "",
-    lname: "",
+    name: "",
     address: "",
     email: "",
     accessToken: "",
@@ -15,11 +14,8 @@ export const userSlice = createSlice({
     password: "",
   },
   reducers: {
-    setFirstName: (state, action) => {
-      state.fname = action.payload + " ";
-    },
-    setLastName: (state, action) => {
-      state.lname = action.payload + " ";
+    setName: (state, action) => {
+      state.name = action.payload ;
     },
     setAddress: (state, action) => {
       state.address = action.payload;
@@ -45,6 +41,8 @@ export const userSlice = createSlice({
     loginSuccess: (state, action) => {
       state.name = action.payload.name;
       state.address = action.payload.address;
+      state.country = action.payload.country;
+      state.postal = action.payload.postal;
       state.email = action.payload.email;
       state.accessToken = action.payload.accessToken;
       state.phone = action.payload.phone;
@@ -54,6 +52,8 @@ export const userSlice = createSlice({
     registerSuccess: (state, action) => {
       state.name = action.payload.name;
       state.address = action.payload.address;
+      state.country = action.payload.country;
+      state.postal = action.payload.postal;
       state.email = action.payload.email;
       state.phone = action.payload.phone;
       state.password = action.payload.password;

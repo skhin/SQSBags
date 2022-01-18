@@ -102,7 +102,7 @@ const Login = () => {
             <OutlinedInput
               id="outlined-adornment-password"
               type={hidden ? "password" : "text"}
-              value={user.password}
+              // value={user.password}
               onChange={handlePasswordChange}
               endAdornment={
                 <InputAdornment position="end">

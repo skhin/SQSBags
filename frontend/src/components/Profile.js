@@ -1,11 +1,19 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import "./Profile.css";
+import { Button } from "@mui/material";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const Profile = () => {
   const user = useSelector((state) => state.user);
-  //   const getUser = await axios.get("/find/")
+  const history = useHistory();
+  const editProfile = (e) => {
+    e.preventDefault();
+    const path = "/profile/edit";
+    history.push(path);
+  };
+  
   return (
     <div>
       <h3>{user.name}'s Profile</h3>
@@ -21,7 +29,7 @@ const Profile = () => {
           </tr>
           <tr>
             <td className="info">Address: </td>
-            <td className="detail">{user.address}</td>
+            <td className="detail">{user.address}<br/>{user.country + user.postal}</td>
           </tr>
           <tr>
             <td className="info">Mobile: </td>
@@ -29,6 +37,11 @@ const Profile = () => {
           </tr>
         </tbody>
       </table>
+      <div className="options">
+        <Button variant="outlined" onClick={editProfile}>
+          Edit
+        </Button>
+      </div>
     </div>
   );
 };
