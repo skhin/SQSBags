@@ -8,9 +8,6 @@ const ForgotPassword = () => {
     flexDirection: "column",
     alignItems: "center",
   };
-  const handleClick = (e) => {
-    e.preventDefault();
-  };
   return (
     <div style={style}>
       <p>
