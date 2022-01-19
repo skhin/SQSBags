@@ -45,6 +45,8 @@ const Navbar = (click) => {
 
   // ********************* //
 
+  // ******** HANDLE SEARCH ************* //
+
   const [searchText, setsearch] = useState("");
   const [bagsData, setbagsData] = useState([]);
 
@@ -89,6 +91,8 @@ const Navbar = (click) => {
 
   // ********************* //
 
+  // ******** UPDATE THE CART LOGO ON HOMPEAGE WITH COUNT************* //
+
   const cartItemsInLocalStorage = localStorage.getItem("cart")
     ? JSON.parse(localStorage.getItem("cart"))
     : [];
@@ -117,16 +121,18 @@ const Navbar = (click) => {
           <div className="navbar__search__container">
             <div className="navbar__input">
               {/* <Input placeholder="Search" />
-              <Search style={{ color: "gray", fontSize: 16 }} /> */}
-              <Input
-                placeholder="Search"
-                onChange={handleSearchInput}
-                value={searchText}
-              />
-              <Search
-                style={{ color: "gray", fontSize: 16, cursor: "pointer" }}
-                onClick={handleSearchOutput}
-              />
+              <Search style={{ color: "gray", fontSize: 16 }} /> */}{" "}
+              <Link className="results" to="/search">
+                <Input
+                  placeholder="Search"
+                  onChange={handleSearchInput}
+                  value={searchText}
+                />
+                <Search
+                  style={{ color: "gray", fontSize: 16, cursor: "pointer" }}
+                  onClick={handleSearchOutput}
+                />{" "}
+              </Link>
             </div>
           </div>
         </div>

@@ -29,14 +29,6 @@ const HomePage = () => {
   const [error, setError] = useState(false);
   const [loading, setloading] = useState(true);
 
-  useEffect(() => {
-    getAllBags();
-  }, []);
-
-  useEffect(() => {
-    getAllBags();
-  }, []);
-
   const getAllBags = async () => {
     try {
       const { data } = await axios.get("/api/bags");
@@ -54,6 +46,10 @@ const HomePage = () => {
       setloading(false);
     }
   };
+
+  useEffect(() => {
+    getAllBags();
+  }, []);
 
   return (
     <div className="homepage">
@@ -88,6 +84,7 @@ const HomePage = () => {
               ))
             )}
           </div>
+
           <ShopPage />
         </div>
       </div>
