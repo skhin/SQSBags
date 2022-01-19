@@ -89,6 +89,21 @@ const Navbar = (click) => {
 
   // ********************* //
 
+  const cartItemsInLocalStorage = localStorage.getItem("cart")
+    ? JSON.parse(localStorage.getItem("cart"))
+    : [];
+
+  const [cart, setCart] = useState({ cartItems: cartItemsInLocalStorage });
+
+  const { cartItems } = cart;
+  useEffect(() => {}, []);
+
+  const getCartCount = () => {
+    return cartItems.reduce((qty, item) => Number(item.qty) + qty, 0);
+  };
+
+  // ********************* //
+
   return (
     <div>
       <nav className="navbar">
@@ -128,7 +143,7 @@ const Navbar = (click) => {
               <Link to="/cart" className="cart__link">
                 <i className="fas fa-shopping-cart"></i>
                 <span>
-                  Cart <span className="cartlogo__badge">0</span>
+                  Cart <span className="cartlogo__badge">{getCartCount()}</span>
                 </span>
               </Link>
             </li>
