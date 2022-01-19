@@ -24,3 +24,10 @@ img {
   width: 100%;
   object-fit: contain;
 }
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}

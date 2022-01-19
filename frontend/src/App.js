@@ -57,7 +57,7 @@ function App() {
         <Navbar click={() => setSideToggle(true)} />
         <SideDrawer show={sideToggle} click={() => setSideToggle(false)} />
         <Backdrop show={sideToggle} click={() => setSideToggle(false)} />
-        <main className="app">
+        <main className="wrapper">
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/shop" component={ShopPage} />
