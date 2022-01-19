@@ -10,6 +10,10 @@
   padding-right: 60px;
 }
 
+.nav__sqs {
+  margin-right: 30px;
+}
+
 .navbar__left {
   flex: 1;
   display: inline-flex;
@@ -30,6 +34,8 @@
   text-align: center;
   font-weight: bold;
   justify-content: space-between;
+  font-size: 30px;
+  align-items: flex-end;
 }
 
 .navbar__right {
@@ -124,6 +130,16 @@ h4 {
   color: blue;
 }
 
+.shop__link {
+  margin-right: 30px;
+  margin-left: 10px;
+  color: black;
+}
+
+.contact__link {
+  margin-right: 30px;
+  color: navy;
+}
 /* 
 .hamburger__menu {
   display: none;

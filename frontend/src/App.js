@@ -21,6 +21,7 @@ import Register from "./components/Register";
 import ForgotPassword from "./pages/ForgotPassword";
 import Profile from "./components/Profile";
 import EditProfile from "./components/EditProfile";
+import ContactPage from "./pages/ContactPage";
 
 function App() {
   const [sideToggle, setSideToggle] = useState(false);
@@ -63,6 +64,7 @@ function App() {
             <Route exact path="/shop" component={ShopPage} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/bags/:id" component={ProductPage} />
+            <Route exact path="/contact" component={ContactPage} />
             <Route exact path="/cart" component={CartPage} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/checkout">
