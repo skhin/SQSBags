@@ -73,3 +73,7 @@
     margin: 1rem;
   }
 }
+
+.checkout__btn {
+  margin-bottom: 40px;
+}

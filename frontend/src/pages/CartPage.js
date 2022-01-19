@@ -1,7 +1,7 @@
 import React from "react";
 import "./CartPage.css";
 import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+// import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
@@ -127,7 +127,9 @@ const CartPage = () => {
           <p>${getCartSubTotal()}</p>
         </div>
         <div>
-          <button onClick={checkout}>Proceed To Checkout</button>
+          <button className="checkout__btn" onClick={checkout}>
+            Proceed To Checkout
+          </button>
         </div>
       </div>
     </div>
