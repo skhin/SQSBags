@@ -38,6 +38,9 @@ export const userSlice = createSlice({
     setPassword: (state, action) => {
       state.password = action.payload;
     },
+    setToken: (state, action) => {
+      state.accessToken = action.payload;
+    },
     loginSuccess: (state, action) => {
       state.name = action.payload.name;
       state.address = action.payload.address;

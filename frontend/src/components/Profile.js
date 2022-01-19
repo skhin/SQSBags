@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import "./Profile.css";
 import { Button, Alert, Modal } from "@mui/material";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { userActions } from "../redux/reducers/userReducer";
 
 const Profile = () => {
   const user = useSelector((state) => state.user);
   const history = useHistory();
+  const dispatch = useDispatch();
   const editProfile = (e) => {
     e.preventDefault();
     const path = "/profile/edit";
@@ -19,9 +21,16 @@ const Profile = () => {
     e.preventDefault();
     setAlert(true);
   };
-  const confirmDelete = (e) => {
+
+  const confirmDelete = async (e) => {
     e.preventDefault();
     console.log("LEGIT DELETE");
+    const res = await axios.delete(`/api/users/${user.id}`, {
+      headers: { token: `Bearer ${user.accessToken}` },
+    });
+    dispatch(userActions.setToken(""));
+    const path = "/";
+    history.push(path);
   };
 
   return (
