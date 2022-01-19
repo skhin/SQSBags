@@ -7,6 +7,9 @@ import { useHistory } from "react-router-dom";
 import { userActions } from "../redux/reducers/userReducer";
 
 const Profile = () => {
+  const buttonStyle = {
+    margin: "20px",
+  };
   const user = useSelector((state) => state.user);
   const history = useHistory();
   const dispatch = useDispatch();
@@ -61,10 +64,10 @@ const Profile = () => {
         </tbody>
       </table>
       <div className="options">
-        <Button variant="outlined" onClick={editProfile}>
+        <Button variant="outlined" onClick={editProfile} style={buttonStyle}>
           Edit Profile
         </Button>
-        <Button variant="outlined" onClick={deleteProfile}>
+        <Button variant="outlined" onClick={deleteProfile} style={buttonStyle}>
           Delete Account
         </Button>
         <Modal open={alert}>
