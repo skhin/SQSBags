@@ -85,8 +85,13 @@ const ContactPage = () => {
                           <div className="">
                             <h6 className="font-weight-medium">Address</h6>
                             <p className="">
-                              79 Anson Rd, Level 20
-                              <br /> Singapore
+                              <a
+                                href="https://www.google.com/maps/place/General+Assembly/@1.2742806,103.8434798,17z/data=!3m1!4b1!4m5!3m4!1s0x31da196d9bbc0325:0x39dd4c96c06eeaca!8m2!3d1.2742752!4d103.8456739"
+                                target="_blank"
+                              >
+                                79 Anson Rd, Level 20
+                                <br /> Singapore
+                              </a>
                             </p>
                           </div>
                         </div>
@@ -99,8 +104,8 @@ const ContactPage = () => {
                           <div className="">
                             <h6 className="font-weight-medium">Phone</h6>
                             <p className="">
-                              123 456 7890
-                              <br /> 098 765 4321
+                              <a href="tel:1234567890">123 456 7890</a>
+                              <br /> <a href="tel:0987654321">098 765 4321</a>
                             </p>
                           </div>
                         </div>
@@ -113,8 +118,13 @@ const ContactPage = () => {
                           <div className="">
                             <h6 className="font-weight-medium">Email</h6>
                             <p className="">
-                              info@sqsbags.com
-                              <br /> 123@wsqsbags.com
+                              <a href="mailto:info@sqsbags.com">
+                                info@sqsbags.com
+                              </a>
+                              <br />{" "}
+                              <a href="mailto:123@wsqsbags.com">
+                                123@wsqsbags.com
+                              </a>
                             </p>
                           </div>
                         </div>
