@@ -137,7 +137,7 @@ const Login = () => {
       </div>
       <div>
         <header style={header}>I DON'T HAVE AN ACCOUNT YET</header>
-        <div style={{ textAlign: "center" }}>
+        <div style={{ textAlign: "center", marginBottom: "50px" }}>
           <p>Get to save items and checkout your newest favourite!</p>
           <Button
             variant="outlined"
