@@ -140,6 +140,9 @@ const Navbar = (click) => {
           <Link to="/shop" className="shop__link">
             SHOP
           </Link>
+          <Link to="/contact" className="contact__link">
+            CONTACT
+          </Link>
           <span> </span>
           {isLoggedIn()}
         </div>
