@@ -447,7 +447,6 @@ const Register = () => {
   ];
   //for password input visibility toggle
   const [password, setPassword] = useState("");
-  // const [confirmPassword, setConfirmPassword] = useState("");
   const [hidden, setHidden] = useState(true);
   const handleVisibility = () => {
     setHidden(!hidden);
@@ -459,9 +458,6 @@ const Register = () => {
   const handleChange = (e) => {
     setPassword(e.target.value);
   };
-  // const handleChange2 = (e) => {
-  //   setConfirmPassword(e.target.value);
-  // };
   //to move form from one section to another
   const passwordRef = useRef(null);
   const passwordRoute = () => {
@@ -612,28 +608,24 @@ const Register = () => {
           <OutlinedInput
             id="outlined-adornment-password"
             type={hidden2 ? "password" : "text"}
-            // value={confirmPassword}
             onChange={handlePasswordChange}
             endAdornment={
               <InputAdornment position="end">
                 <IconButton
                   aria-label="toggle password visibility"
                   onClick={handleVisibility2}
-                  // onMouseDown={handleMouseDownPassword}
                   edge="end"
                 >
                   {hidden2 ? <VisibilityOffIcon /> : <VisibilityIcon />}
                 </IconButton>
               </InputAdornment>
             }
+            label="Confirm Password"
           />
         </FormControl>
         <Button
           variant="outlined"
           sx={{ m: 1, width: "25ch" }}
-          // onClick={() => {
-          //   console.log("click!");
-          // }}
           disabled={passwordCheck(password, user.password)}
           onClick={particularsRoute}
         >
