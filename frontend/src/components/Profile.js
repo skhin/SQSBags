@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import "./Profile.css";
-import { Button } from "@mui/material";
+import { Button, Alert, Modal } from "@mui/material";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
@@ -13,7 +13,17 @@ const Profile = () => {
     const path = "/profile/edit";
     history.push(path);
   };
-  
+
+  const [alert, setAlert] = useState(false);
+  const deleteProfile = (e) => {
+    e.preventDefault();
+    setAlert(true);
+  };
+  const confirmDelete = (e) => {
+    e.preventDefault();
+    console.log("LEGIT DELETE");
+  };
+
   return (
     <div>
       <h3>{user.name}'s Profile</h3>
@@ -29,7 +39,11 @@ const Profile = () => {
           </tr>
           <tr>
             <td className="info">Address: </td>
-            <td className="detail">{user.address}<br/>{user.country + user.postal}</td>
+            <td className="detail">
+              {user.address}
+              <br />
+              {user.country + user.postal}
+            </td>
           </tr>
           <tr>
             <td className="info">Mobile: </td>
@@ -39,8 +53,32 @@ const Profile = () => {
       </table>
       <div className="options">
         <Button variant="outlined" onClick={editProfile}>
-          Edit
+          Edit Profile
         </Button>
+        <Button variant="outlined" onClick={deleteProfile}>
+          Delete Account
+        </Button>
+        <Modal open={alert}>
+          <Alert
+            severity="error"
+            action={
+              <>
+                <Button color="inherit" size="small" onClick={confirmDelete}>
+                  Delete
+                </Button>
+                <Button
+                  color="inherit"
+                  size="small"
+                  onClick={() => setAlert(false)}
+                >
+                  Return
+                </Button>
+              </>
+            }
+          >
+            Confirm account deletion? You will lose all your favourites, sad.
+          </Alert>
+        </Modal>
       </div>
     </div>
   );
