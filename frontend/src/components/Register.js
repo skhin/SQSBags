@@ -678,7 +678,7 @@ const Register = () => {
             id="outlined-basic"
             label="Postal Code"
             sx={{ m: 1, width: "25ch" }}
-            type="text"
+            type="number"
             onChange={handlePostalChange}
             // variant="outlined"
           />
