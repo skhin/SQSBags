@@ -8,14 +8,14 @@ export const userSlice = createSlice({
     email: "",
     accessToken: "",
     country: "",
-    postal: "",
+    postal: null,
     countryCode: "",
     phone: null,
     password: "",
   },
   reducers: {
     setName: (state, action) => {
-      state.name = action.payload ;
+      state.name = action.payload;
     },
     setAddress: (state, action) => {
       state.address = action.payload;
