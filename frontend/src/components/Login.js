@@ -18,6 +18,7 @@ import axios from "axios";
 
 const Login = () => {
   const user = useSelector((state) => state.user);
+  console.log(user);
   const dispatch = useDispatch();
 
   // const [password, setPassword] = useState("");
