@@ -46,6 +46,8 @@ const Login = () => {
     console.log(res);
     //gets data back from database upon successful log in
     dispatch(userActions.loginSuccess(res.data));
+    console.log(res.data._id)
+    console.log(user.id);
     history.goBack();
   };
 

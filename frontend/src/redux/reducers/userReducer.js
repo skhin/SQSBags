@@ -47,6 +47,7 @@ export const userSlice = createSlice({
       state.accessToken = action.payload.accessToken;
       state.phone = action.payload.phone;
       state.password = action.payload.password;
+      state.id = action.payload._id;
       //state is like the actual thing, action.payload is like what you put in
     },
     registerSuccess: (state, action) => {
@@ -57,6 +58,7 @@ export const userSlice = createSlice({
       state.email = action.payload.email;
       state.phone = action.payload.phone;
       state.password = action.payload.password;
+      state.id = action.payload._id;
     },
     logout: (state) => {
       state.fname = "";
