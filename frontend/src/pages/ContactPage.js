@@ -85,13 +85,8 @@ const ContactPage = () => {
                                 info@sqsbags.com
                               </a>
                               <br />{" "}
-<<<<<<< HEAD
-                              <a href="mailto:123@sqsbags.com">
-                                123@sqsbags.com
-=======
                               <a href="mailto:123@wsqsbags.com">
                                 123@wsqsbags.com
->>>>>>> 9dd26077001ce5dc0066df1dbc47e4a8a1417c57
                               </a>
                             </p>
                           </div>

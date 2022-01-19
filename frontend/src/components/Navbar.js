@@ -144,7 +144,6 @@ const Navbar = (click) => {
           <Link to="/contact" className="contact__link">
             CONTACT
           </Link>
-          <span> </span>
           {isLoggedIn()}
         </div>
         <div className="navbar__right">
