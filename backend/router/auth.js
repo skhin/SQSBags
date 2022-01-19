@@ -15,6 +15,8 @@ router.post("/register", async (req, res) => {
     ).toString(),
     address: req.body.address,
     phone: req.body.phone,
+    country: req.body.country,
+    postal: req.body.postal,
   });
   try {
     const userSavedinDB = await newUser.save();
