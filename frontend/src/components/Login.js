@@ -18,6 +18,7 @@ import axios from "axios";
 
 const Login = () => {
   const user = useSelector((state) => state.user);
+  console.log(user);
   const dispatch = useDispatch();
 
   // const [password, setPassword] = useState("");
@@ -46,8 +47,6 @@ const Login = () => {
     console.log(res);
     //gets data back from database upon successful log in
     dispatch(userActions.loginSuccess(res.data));
-    console.log(res.data._id)
-    console.log(user.id);
     history.goBack();
   };
 

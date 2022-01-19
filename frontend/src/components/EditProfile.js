@@ -31,14 +31,22 @@ const EditProfile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("update user!");
+    console.log(typeof user.accessToken);
+
     //throw to database
-    const res = await axios.put(`/api/users/${user.email}`, {
-      name: user.name,
-      email: user.email,
-      password: user.password,
-      address: user.address + " " + user.country + user.postal,
-      phone: user.phone,
-    });
+    const res = await axios.put(
+      `/api/users/${user.id}`, //url
+      {
+        name: user.name,
+        email: user.email,
+        address: user.address,
+        country: user.country,
+        postal: user.postal,
+        phone: user.phone,
+      }, //request
+      { headers: { token: `Bearer ${user.accessToken}` } }, //configuration is optional
+      // { withCredentials: true }
+    );
     console.log(res);
     history.goBack(); //can only come from profile page
   };
@@ -53,6 +61,7 @@ const EditProfile = () => {
       user.phone === null
     );
   };
+  console.log(user);
 
   return (
     <div>
