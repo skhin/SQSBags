@@ -12,6 +12,26 @@
   margin-bottom: 1rem;
 }
 
+.real__contact {
+  font-size: 29px;
+}
+
 ul {
   list-style: none;
+  font-size: 25px;
+  color: black;
+  font-weight: bolder;
+}
+
+.contactImg {
+  display: block;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 500px;
+}
+
+.image__icon {
+  margin-right: 10px;
 }

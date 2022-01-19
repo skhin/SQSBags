@@ -6,6 +6,7 @@ import axios from "axios";
 
 // Components
 import Product from "../components/Product";
+import female_shop from "./female_shop.jpg";
 
 //Actions
 // import { getAllBags as listProducts } from "../redux/actions/productActions";
@@ -53,6 +54,16 @@ const HomePage = () => {
 
   return (
     <div className="homepage">
+      <div className="banner">
+        <div className="banner__words">
+          <strong>
+            <h2 className="welcome">SQS Bags</h2>
+            <h4 className="bagging">Your One-Stop Bagging Rights</h4>
+          </strong>
+        </div>
+      </div>
+
+      <br />
       <h2 className="homepage__title">
         <strong>Our New Arrivals</strong>
       </h2>

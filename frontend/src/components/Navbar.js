@@ -105,6 +105,7 @@ const Navbar = (click) => {
   const getCartCount = () => {
     return cartItems.reduce((qty, item) => Number(item.qty) + qty, 0);
   };
+  console.log(getCartCount());
 
   // ********************* //
 

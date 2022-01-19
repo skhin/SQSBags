@@ -10,6 +10,43 @@
   font-family: "Roboto", sans-serif;
   font-weight: bolder;
   margin-bottom: 1rem;
+  margin-top: 50px;
+}
+
+.banner {
+  background-image: url("./female_shop.jpg");
+  box-shadow: (rgba(0, 0, 0, 0.3) 0 4px 10px 0);
+  background-size: cover;
+  height: 522px;
+  opacity: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner__words {
+  position: relative;
+  width: auto;
+  text-align: center;
+  font-weight: bolder;
+}
+
+.welcome {
+  font-weight: bolder;
+  font-family: "Playfair Display SC", serif;
+  color: rgb(15, 0, 0);
+  font-size: 200px;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #2a7c6f;
+}
+
+.bagging {
+  font-weight: bolder;
+  font-family: "Playfair Display SC", serif;
+  color: #2a7c6f;
+  font-size: 50px;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #ffffff;
 }
 
 hr {
