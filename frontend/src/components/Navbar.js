@@ -45,6 +45,8 @@ const Navbar = (click) => {
 
   // ********************* //
 
+  // ******** HANDLE SEARCH ************* //
+
   const [searchText, setsearch] = useState("");
   const [bagsData, setbagsData] = useState([]);
 
@@ -89,6 +91,23 @@ const Navbar = (click) => {
 
   // ********************* //
 
+  // ******** UPDATE THE CART LOGO ON HOMPEAGE WITH COUNT************* //
+
+  const cartItemsInLocalStorage = localStorage.getItem("cart")
+    ? JSON.parse(localStorage.getItem("cart"))
+    : [];
+
+  const [cart, setCart] = useState({ cartItems: cartItemsInLocalStorage });
+
+  const { cartItems } = cart;
+  useEffect(() => {}, []);
+
+  const getCartCount = () => {
+    return cartItems.reduce((qty, item) => Number(item.qty) + qty, 0);
+  };
+
+  // ********************* //
+
   return (
     <div>
       <nav className="navbar">
@@ -102,16 +121,18 @@ const Navbar = (click) => {
           <div className="navbar__search__container">
             <div className="navbar__input">
               {/* <Input placeholder="Search" />
-              <Search style={{ color: "gray", fontSize: 16 }} /> */}
-              <Input
-                placeholder="Search"
-                onChange={handleSearchInput}
-                value={searchText}
-              />
-              <Search
-                style={{ color: "gray", fontSize: 16, cursor: "pointer" }}
-                onClick={handleSearchOutput}
-              />
+              <Search style={{ color: "gray", fontSize: 16 }} /> */}{" "}
+              <Link className="results" to="/search">
+                <Input
+                  placeholder="Search"
+                  onChange={handleSearchInput}
+                  value={searchText}
+                />
+                <Search
+                  style={{ color: "gray", fontSize: 16, cursor: "pointer" }}
+                  onClick={handleSearchOutput}
+                />{" "}
+              </Link>
             </div>
           </div>
         </div>
@@ -128,7 +149,7 @@ const Navbar = (click) => {
               <Link to="/cart" className="cart__link">
                 <i className="fas fa-shopping-cart"></i>
                 <span>
-                  Cart <span className="cartlogo__badge">0</span>
+                  Cart <span className="cartlogo__badge">{getCartCount()}</span>
                 </span>
               </Link>
             </li>

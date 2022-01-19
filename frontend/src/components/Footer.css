@@ -1,0 +1,18 @@
+.footer__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__left {
+  flex: 1;
+  justify-content: space-evenly;
+}
+
+.footer__center {
+  flex: 1;
+}
+
+.footer__right {
+  flex: 1;
+}
